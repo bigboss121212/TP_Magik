@@ -4,6 +4,8 @@
 	$action = new JeuAction();
 	$data = $action->execute();
 
+	
+
 	$pageTitre = "Jeu";
 	require_once("partial/header.php");
 ?>
@@ -19,8 +21,6 @@
 		<div class="grid-item">8</div>
 		<div class="grid-item">9</div>
 		</div>
-
-
 
 
 	</body>
