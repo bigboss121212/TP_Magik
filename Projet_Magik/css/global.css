@@ -136,7 +136,7 @@ li{
     grid-template-rows: auto auto auto;
 }
 
-.grid-container {
+#grid-container {
     display: grid;
     grid-template-columns: auto auto auto auto auto auto auto;
     background-color: #2196F3;
@@ -155,9 +155,14 @@ li{
     margin : 10px;
     font-size: 30px;
     text-align: center;
-    height: 50px;
+    height: 100px;
     width: 50px;
     z-index: 1;
+}
+
+.grid-item > p {
+    font-size: 10px;
+    text-align: left;
 }
 
 #abandonne{
@@ -175,7 +180,7 @@ li{
 #classH{
     z-index: 1;
     position: absolute;
-    bottom: 15%; 
+    bottom: 20%; 
     background-color: #2196F3;
     height: 20px;
     width: 100px;
