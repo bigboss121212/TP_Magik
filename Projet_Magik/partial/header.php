@@ -15,6 +15,13 @@
             }
         ?>
         <?php
+            if($pageTitre == "pageDeck"){
+                ?>
+                    <script src="js/deck.js"></script>
+                <?php
+            }
+        ?>
+        <?php
             if($pageTitre == "Loby"){
                 ?>
                     <script src="js/javascript.js"></script>
@@ -35,6 +42,7 @@
                 ?>
                     <div id="menu">
                         <ul>
+                            <li><a href="loby.php">Loby</a></li>
                             <li><a href="pageDeck.php">PageDeck</a></li>
                             <li><a href="stats.php">Stats</a></li>
                             <li><a href="?logout=true">Deconnexion</a></li>

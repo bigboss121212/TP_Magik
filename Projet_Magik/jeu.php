@@ -4,75 +4,31 @@
 	$action = new JeuAction();
 	$data = $action->execute();
 
-	
-
 	$pageTitre = "Jeu";
 	require_once("partial/header.php");
 
-
 ?>
-		<div id="jeuAdversaire"></div>
-
+		<div id="jeuAdversaire">
+			<div id="carteAdv"></div>
+			<div id="infoAdv">
+				<p id="infoACl"></p>
+				<p id="infoAN"></p>
+				<p id="infoAHp"></p>
+				<p id="infoACa"></p>
+				<p id="infoAMp"></p>
+			</div>
+		</div>
+		
 		<div id="background_3"></div>
+
+		<div id="jeuAdv"></div>
+
+		<div id="jeuPlayer"></div>
+		
 	
-		<!-- retravailler les carte -->
+		<!-- retravailler les carte les creer avec le dom et les detruire-->
 		<div id="grid-container">
-			<div class="grid-item">
-				<p></p>
-				<p></p>
-				<p></p>
-				<p></p>
-				<p></p>
-				<p></p>
-			</div>
-			<div class="grid-item">
-				<p></p>
-				<p></p>
-				<p></p>
-				<p></p>
-				<p></p>
-				<p></p>
-			</div>
-			<div class="grid-item">
-				<p></p>
-				<p></p>
-				<p></p>
-				<p></p>
-				<p></p>
-				<p></p>
-			</div>
-			<div class="grid-item">
-				<p></p>
-				<p></p>
-				<p></p>
-				<p></p>
-				<p></p>
-				<p></p>
-			</div>
-			<div class="grid-item">
-				<p></p>
-				<p></p>
-				<p></p>
-				<p></p>
-				<p></p>
-				<p></p>
-			</div>
-			<div class="grid-item">
-				<p></p>
-				<p></p>
-				<p></p>
-				<p></p>
-				<p></p>
-				<p></p>
-			</div>
-			<div class="grid-item">
-				<p></p>
-				<p></p>
-				<p></p>
-				<p></p>
-				<p></p>
-				<p></p>
-			</div>
+
 		</div>
 
 		<div id="classH"></div>
