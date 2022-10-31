@@ -57,13 +57,14 @@ class Fighter{
         if(this.x == this.cible_x && this.y == this.cible_y){
             
             if(this.cible_h){
-                this.cible_y = canevas.height - 100;
+
+                this.cible_y = 300//canevas.height - 200;
                 this.cible_x = 200; 
                 this.cible_h = false;
             }
             else if (!this.cible_h){
                 this.cible_x = 100;
-                this.cible_y = 40;
+                this.cible_y = 100;
                 this.cible_h = true;
             }
         }

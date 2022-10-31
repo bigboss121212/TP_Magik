@@ -17,8 +17,21 @@ const state = () => {
         
         setTimeout(state, 1000); // Attendre 1 seconde avant de relancer l’appel
     })
-
 }
+
+const jouerC = (string) => {
+    fetch("ajax-carte.php", {   
+        method : "POST",
+        data: string      
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+
+    })
+}
+
+
 
 window.addEventListener("load", () => {
 
@@ -80,6 +93,20 @@ const gameUpdate = data => {
                 newP5.textContent = "id: " + element.id;
 
                 newDiv.append(newP, newP1, newP2, newP3, newP4, newP5);
+                //function pour jouer une carte lorsque c'est notre tour
+                newDiv.addEventListener('click', function jouerCarte(){
+                    if(data.yourTurn == true){
+                        if(data.mp >= element.cost){
+                            data.mp -= element.cost;
+      
+                            // window.location.href = "add.php?uidCarte=" + element.uid; //pour mettre la variable dan un get[];
+                            console.log(element.uid);
+        
+                            jouerC(element.uid);
+                        }
+                        
+                    }
+                });
 
                 carte.prepend(newDiv);                
             });
@@ -100,7 +127,7 @@ const gameUpdate = data => {
         infoACa.textContent = "Remaining Card: " + data.opponent.remainingCardsCount;
         infoAMp.textContent = "Mp: " + data.opponent.mp;
 
-        console.log(data.opponent);
+        // console.log(data.opponent);
 
         if(data.opponent.handSize != sizeAdv){
 
@@ -161,8 +188,6 @@ const gameUpdate = data => {
         }
 
         boardAdv = data.opponent.board.length;
-
-
     }
 }
 
