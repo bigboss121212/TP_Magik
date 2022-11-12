@@ -4,7 +4,7 @@
 	$action = new JeuAction();
 	$data = $action->execute();
 
-	$pageTitre = "Jeu";
+	$pageTitre = "PVP";
 	require_once("partial/header.php");
 
 ?>

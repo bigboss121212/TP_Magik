@@ -11,7 +11,7 @@
 
             $data = [];
             $data["key"] = $_SESSION["key"];
-            $data["type"] = "TRAINING";
+            $data["type"] = "PVP";
 
             $service = "games/auto-match"; 
 
