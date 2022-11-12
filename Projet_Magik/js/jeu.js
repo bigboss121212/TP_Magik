@@ -13,6 +13,9 @@ const state = () => {
     .then(response => response.json())
     .then(data => {
         
+        if(data == "LAST_GAME_WON" || data == "LAST_GAME_LOST"){
+            window.location="loby.php";
+        }
         console.log(data); // contient les cartes/état du jeu.
         dataG = data;
         gameUpdate(data);
@@ -60,7 +63,6 @@ const gameUpdate = data => {
 
         endturn.addEventListener('click', function(){
             if(data.yourTurn == true){
-                
                 fetch("ajax-end-turn.php", {})
                 .then(response => response.json())
                 .then(data => {
@@ -109,6 +111,16 @@ const gameUpdate = data => {
                 newP3.textContent = "mechanics: " + element.mechanics;
 
                 newDiv.append(newP, newP1, newP2, newP3);
+
+                if(element.mechanics.includes("Taunt")){
+                    newDiv.style.boxShadow = "0 0 60px 30px #fcffa4"
+                }
+                else if(element.mechanics.includes("Stealth")){
+                    newDiv.style.boxShadow = "0 0 60px 30px #1385ee"
+                }
+                else if(element.mechanics.includes("Charge")){
+                    newDiv.style.boxShadow = "0 0 60px 30px #f00"
+                }
                 //function pour jouer une carte lorsque c'est notre tour
                 newDiv.addEventListener('click', function(){
                     if(data.yourTurn == true){
@@ -150,6 +162,27 @@ const gameUpdate = data => {
         infoACa.textContent = "Remaining Card: " + data.opponent.remainingCardsCount;
         infoAMp.textContent = "Mp: " + data.opponent.mp;
 
+
+        infoAN.addEventListener('click', function(){ //faire verification si les cartes ADV on taunt
+            if(attaquer){
+                let formdata = new FormData();
+                formdata.append("uidAdv", 0);
+                formdata.append("uidPlay", carteActionUID);
+
+                fetch("ajax-attaque.php", {
+                    method: "post",
+                    body: formdata
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                })
+
+                attaquer = false;
+                carteActionUID = null;
+            }
+        });
+       
         // console.log(data.opponent);
 
         if(data.opponent.handSize != sizeAdv){
@@ -229,6 +262,16 @@ const gameUpdate = data => {
     
             newDiv.append(newP, newP1, newP2, newP3);
 
+            if(element.mechanics.includes("Taunt")){
+                newDiv.style.boxShadow = "0 0 60px 30px #fcffa4"
+            }
+            else if(element.mechanics.includes("Stealth")){
+                newDiv.style.boxShadow = "0 0 60px 30px #1385ee"
+            }
+            else if(element.mechanics.includes("Charge")){
+                newDiv.style.boxShadow = "0 0 60px 30px #f00"
+            }
+
             newDiv.addEventListener('click', function(){
                 if(data.yourTurn == true){
                     if(data.mp >= element.cost){
@@ -290,8 +333,18 @@ const gameUpdate = data => {
     
             newDiv.append(newP, newP1, newP2, newP3);
 
+            if(element.mechanics.includes("Taunt")){
+                newDiv.style.boxShadow = "0 0 60px 30px #fcffa4"
+            }
+            else if(element.mechanics.includes("Stealth")){
+                newDiv.style.boxShadow = "0 0 60px 30px #1385ee"
+            }
+            else if(element.mechanics.includes("Charge")){
+                newDiv.style.boxShadow = "0 0 60px 30px #f00"
+            }
+
             newDiv.addEventListener('click', function(){
-                if(!(element.mechanics.includes("stealth"))){
+                if(!(element.mechanics.includes("Stealth"))){
                     if(attaquer){
                         
                         let formdata = new FormData();
