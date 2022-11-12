@@ -125,7 +125,7 @@ li{
     background-color: #2196F3;
     z-index: 1;
     position: absolute;
-    top: 15%;
+    top: 10%;
     position: absolute;
 }
 
@@ -240,23 +240,34 @@ li{
     height: 150px;
     z-index: 1;
     display:flex;
-    top: 35%;
+    top: 30%;
     position: absolute;
     border: 1px solid rgba(0, 0, 0, 0.8);
     justify-content: center;
 }
 
 .carteABoard{
-    height: 75px;
-    width: 50px;
-    z-index: 1;
-    background-color: yellow;
-    text-align: center;
-    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.8);
     margin : 10px;
+    font-size: 30px;
+    text-align: center;
+    height: 120px;
+    width: 90px;
+    z-index: 1;
+}
+
+.imageCarte{
+    margin:auto;
+    width: 80%;
+    height: 45%;
+    top: 5%;
+    background-color: antiquewhite;
+    border: 1px solid rgba(0, 0, 0, 0.8);
 }
 
 .infoCarte {
+    margin-left: 10px;
     font-size: 10px;
     text-align: left;
 }
@@ -273,14 +284,11 @@ li{
 
 }
 
-
-
 #infoPerso{
     display: grid;
     z-index: 1;
     position: absolute;
     bottom: 0px; 
-    background-color: #2196F3;
     height: 200px;
     width: 200px;
     margin-left: 50px;
@@ -303,12 +311,11 @@ li{
 .grid-item {
     background-color: rgba(255, 255, 255, 0.8);
     border: 1px solid rgba(0, 0, 0, 0.8);
-    padding: 20px;
     margin : 10px;
     font-size: 30px;
     text-align: center;
-    height: 100px;
-    width: 50px;
+    height: 140px;
+    width: 90px;
     z-index: 1;
 }
 
@@ -321,12 +328,10 @@ li{
     z-index: 1;
     position: absolute;
     bottom: 0px; 
-    background-color: #2196F3;
     height: 200px;
     width: 200px;
     right: 0px;
     margin-right: 50px;
-
 }
 
 #classH{

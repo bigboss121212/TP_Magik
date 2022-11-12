@@ -13,8 +13,7 @@ const state = () => {
     .then(response => response.json())
     .then(data => {
         
-
-        // console.log(data); // contient les cartes/état du jeu.
+        console.log(data); // contient les cartes/état du jeu.
         dataG = data;
         gameUpdate(data);
         
@@ -36,6 +35,7 @@ const gameUpdate = data => {
         let temps = document.getElementById("temps");
         let magie = document.getElementById("magie");
         let nbCarte = document.getElementById("nbCarte");
+        let endturn = document.getElementById("boutonA");
 
         classH.innerHTML = data.heroClass + "\n";
         classH.innerHTML += "\n";
@@ -44,6 +44,30 @@ const gameUpdate = data => {
         temps.innerHTML = "temps: " + data.remainingTurnTime;
         magie.innerHTML = "mp: " + data.mp;
         nbCarte.innerHTML = "carte: " + data.remainingCardsCount;
+        endturn.innerHTML = "END TURN"
+
+        classH.addEventListener('click', function(){
+            if(data.yourTurn == true){
+                if(!data.heroPowerAlreadyUsed){
+                    fetch("ajax-heroPower.php", {})
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log(data);
+                    })
+                }
+            }
+        });
+
+        endturn.addEventListener('click', function(){
+            if(data.yourTurn == true){
+                
+                fetch("ajax-end-turn.php", {})
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                })
+            }
+        });
 
         //afficher les cates du joueur
         if(data.hand.length != sizePlay){
@@ -57,31 +81,34 @@ const gameUpdate = data => {
                 let newDiv = document.createElement("div");
                 newDiv.className = "grid-item";
 
+                let newImage = document.createElement("div");
+                newImage.className = "imageCarte";
+                
+                newDiv.appendChild(newImage);
+
                 let newP = document.createElement("p");
                 newP.className = "infoCarte";
                 newP.textContent = "atk: " + element.atk;
+                newP.style.position = "fixed";
+                newP.style.top = 15+"%";
 
                 let newP1 = document.createElement("p");
                 newP1.className = "infoCarte";
-                newP1.textContent = "baseHP: " + element.baseHP;
-
+                newP1.textContent = "cost: " + element.cost;
+                newP1.style.position = "fixed";
+                newP1.style.top = 25+"%";
+                
                 let newP2 = document.createElement("p");
                 newP2.className = "infoCarte";
-                newP2.textContent = "cost: " + element.cost;
-                
+                newP2.textContent = "hp: " + element.hp;
+                newP2.style.position = "fixed";
+                newP2.style.top = 35+"%";
+
                 let newP3 = document.createElement("p");
                 newP3.className = "infoCarte";
-                newP3.textContent = "dedicated: " + element.dedicated;
+                newP3.textContent = "mechanics: " + element.mechanics;
 
-                let newP4 = document.createElement("p");
-                newP4.className = "infoCarte";
-                newP4.textContent = "hp: " + element.hp;
-
-                let newP5 = document.createElement("p");
-                newP5.className = "infoCarte";
-                newP5.textContent = "id: " + element.id;
-
-                newDiv.append(newP, newP1, newP2, newP3, newP4, newP5);
+                newDiv.append(newP, newP1, newP2, newP3);
                 //function pour jouer une carte lorsque c'est notre tour
                 newDiv.addEventListener('click', function(){
                     if(data.yourTurn == true){
@@ -143,71 +170,7 @@ const gameUpdate = data => {
 
         //pour l'affichage du board de l'adversaire
         if(data.opponent.board.length != boardAdv){
-            let boardA = document.getElementById("jeuAdv");
-            while (boardA.hasChildNodes()) { //enlever tous les enfants
-                boardA.removeChild(boardA.lastChild);
-            }
-            //faire boucle wile, creer les cartes
-
-            data.opponent.board.forEach(element => {
-
-                let newDiv = document.createElement("div");
-                newDiv.className = "carteABoard";
-
-                let newP = document.createElement("p");
-                newP.className = "infoCarte";
-                newP.textContent = "atk: " + element.atk;
-
-                let newP1 = document.createElement("p");
-                newP1.className = "infoCarte";
-                newP1.textContent = "baseHP: " + element.baseHP;
-
-                let newP2 = document.createElement("p");
-                newP2.className = "infoCarte";
-                newP2.textContent = "cost: " + element.cost;
-                
-                let newP3 = document.createElement("p");
-                newP3.className = "infoCarte";
-                newP3.textContent = "dedicated: " + element.dedicated;
-
-                let newP4 = document.createElement("p");
-                newP4.className = "infoCarte";
-                newP4.textContent = "hp: " + element.hp;
-
-                let newP5 = document.createElement("p");
-                newP5.className = "infoCarte";
-                newP5.textContent = "id: " + element.id;
-
-                newDiv.append(newP, newP1, newP2, newP3, newP4, newP5);
-
-                newDiv.addEventListener('click', function(){
-                    if(!(element.mechanics.includes("stealth"))){
-                       if(attaquer){
-                           
-                           let formdata = new FormData();
-                           formdata.append("uidAdv", element.uid);
-                           formdata.append("uidPlay", carteActionUID);
-
-                           fetch("ajax-attaque.php", {
-                               method: "post",
-                               body: formdata
-                           })
-                           .then(response => response.json())
-                           .then(data => {
-                               console.log(data);
-                           })
-
-                           refreshCarteAdv();
-
-                           attaquer = false;
-                           carteActionUID = null;
-
-                       }
-                    }
-                });
-
-                boardA.prepend(newDiv);                
-            });
+            refreshCarteAdv(); 
         }
 
         boardAdv = data.opponent.board.length;
@@ -216,64 +179,10 @@ const gameUpdate = data => {
         //pour afficher les donnees du joueur
 
         if(data.board.length != boardPl){
-            let boardJ = document.getElementById("jeuPlayer");
-            while (boardJ.hasChildNodes()) { //enlever tous les enfants
-                boardJ.removeChild(boardJ.lastChild);
-            }
-            //faire boucle wile, creer les cartes
-
-            data.board.forEach(element => {
-
-                let newDiv = document.createElement("div");
-                newDiv.className = "carteABoard";
-
-                let newP = document.createElement("p");
-                newP.className = "infoCarte";
-                newP.textContent = "atk: " + element.atk;
-
-                let newP1 = document.createElement("p");
-                newP1.className = "infoCarte";
-                newP1.textContent = "baseHP: " + element.baseHP;
-
-                let newP2 = document.createElement("p");
-                newP2.className = "infoCarte";
-                newP2.textContent = "cost: " + element.cost;
-                
-                let newP3 = document.createElement("p");
-                newP3.className = "infoCarte";
-                newP3.textContent = "dedicated: " + element.dedicated;
-
-                let newP4 = document.createElement("p");
-                newP4.className = "infoCarte";
-                newP4.textContent = "hp: " + element.hp;
-
-                let newP5 = document.createElement("p");
-                newP5.className = "infoCarte";
-                newP5.textContent = "id: " + element.id;
-
-                newDiv.append(newP, newP1, newP2, newP3, newP4, newP5);
-
-                newDiv.addEventListener('click', function(){
-                    if(data.yourTurn == true){
-                        if(data.mp >= element.cost){
-                            data.mp -= element.cost;
-                            if(element.state != "SLEEP"){
-                                attaquer = true;
-                                data.mp -= element.cost;  
-                                carteActionUID = element.uid;          
-                            }
-                        } 
-                    }
-                });
-
-                boardJ.prepend(newDiv);                
-            });
+            refreshCartePlay();
         }
 
         boardPl = data.opponent.board.length;
-
-
-
     }
 
 
@@ -291,31 +200,34 @@ const gameUpdate = data => {
             let newDiv = document.createElement("div");
             newDiv.className = "carteABoard";
 
+            let newImage = document.createElement("div");
+            newImage.className = "imageCarte";
+            
+            newDiv.appendChild(newImage);
+
             let newP = document.createElement("p");
             newP.className = "infoCarte";
             newP.textContent = "atk: " + element.atk;
+            newP.style.position = "relative";
+            newP.style.top = 0+"%";
 
             let newP1 = document.createElement("p");
             newP1.className = "infoCarte";
-            newP1.textContent = "baseHP: " + element.baseHP;
+            newP1.textContent = "cost: " + element.cost;
+            newP1.style.position = "relative";
+            newP1.style.top = 0+"%";
 
             let newP2 = document.createElement("p");
             newP2.className = "infoCarte";
-            newP2.textContent = "cost: " + element.cost;
-            
+            newP2.textContent = "hp: " + element.hp;
+            newP2.style.position = "relative";
+            newP2.style.top = 0+"%";
+
             let newP3 = document.createElement("p");
             newP3.className = "infoCarte";
-            newP3.textContent = "dedicated: " + element.dedicated;
-
-            let newP4 = document.createElement("p");
-            newP4.className = "infoCarte";
-            newP4.textContent = "hp: " + element.hp;
-
-            let newP5 = document.createElement("p");
-            newP5.className = "infoCarte";
-            newP5.textContent = "id: " + element.id;
-
-            newDiv.append(newP, newP1, newP2, newP3, newP4, newP5);
+            newP3.textContent = "mechanics: " + element.mechanics;
+    
+            newDiv.append(newP, newP1, newP2, newP3);
 
             newDiv.addEventListener('click', function(){
                 if(data.yourTurn == true){
@@ -349,31 +261,34 @@ const gameUpdate = data => {
             let newDiv = document.createElement("div");
             newDiv.className = "carteABoard";
 
+            let newImage = document.createElement("div");
+            newImage.className = "imageCarte";
+            
+            newDiv.appendChild(newImage);
+
             let newP = document.createElement("p");
             newP.className = "infoCarte";
             newP.textContent = "atk: " + element.atk;
+            newP.style.position = "relative";
+            newP.style.top = 0+"%";
 
             let newP1 = document.createElement("p");
             newP1.className = "infoCarte";
-            newP1.textContent = "baseHP: " + element.baseHP;
+            newP1.textContent = "cost: " + element.cost;
+            newP1.style.position = "relative";
+            newP1.style.top = 0+"%";
 
             let newP2 = document.createElement("p");
             newP2.className = "infoCarte";
-            newP2.textContent = "cost: " + element.cost;
-            
+            newP2.textContent = "hp: " + element.hp;
+            newP2.style.position = "relative";
+            newP2.style.top = 0+"%";
+
             let newP3 = document.createElement("p");
             newP3.className = "infoCarte";
-            newP3.textContent = "dedicated: " + element.dedicated;
-
-            let newP4 = document.createElement("p");
-            newP4.className = "infoCarte";
-            newP4.textContent = "hp: " + element.hp;
-
-            let newP5 = document.createElement("p");
-            newP5.className = "infoCarte";
-            newP5.textContent = "id: " + element.id;
-
-            newDiv.append(newP, newP1, newP2, newP3, newP4, newP5);
+            newP3.textContent = "mechanics: " + element.mechanics;
+    
+            newDiv.append(newP, newP1, newP2, newP3);
 
             newDiv.addEventListener('click', function(){
                 if(!(element.mechanics.includes("stealth"))){

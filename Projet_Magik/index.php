@@ -10,7 +10,6 @@
 ?>
 
         <?php
-
             if(isset($data["hasConnectionError"])){
            
                 if ($data["hasConnectionError"] == true) {
@@ -20,10 +19,8 @@
                     </div>
                     <?php
                 }
-            }
-                
+            }   
         ?>
-
 
         <form id="login" action="" method="post">
             <div class="formLabel"><label for="courriel"> Nom d'usager : </label></div>
