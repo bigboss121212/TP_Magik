@@ -22,7 +22,7 @@
                 if ($resultat == "INVALID_USERNAME_PASSWORD") {
 
                     $hasConnectionError = true;
-                    // err
+                    return compact("hasConnectionError");
                 }
                 else {
 
@@ -37,6 +37,6 @@
                     
             }
             
-            return $hasConnectionError;
+            
         }
     }

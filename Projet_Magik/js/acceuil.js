@@ -70,7 +70,7 @@ class Fighter{
         }
 
         this.tiledImage.tick(this.x, this.y, ctx)
-        console.log(alive)
+        
         return alive;  
     }
 }

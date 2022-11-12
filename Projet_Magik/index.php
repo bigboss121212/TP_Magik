@@ -9,8 +9,20 @@
     require_once("partial/header.php");
 ?>
 
-   
-        <!-- <div id="background"></div> -->
+        <?php
+
+            if(isset($data["hasConnectionError"])){
+           
+                if ($data["hasConnectionError"] == true) {
+                    ?>
+                    <div id="error">
+                        Erreur d'authentification
+                    </div>
+                    <?php
+                }
+            }
+                
+        ?>
 
 
         <form id="login" action="" method="post">

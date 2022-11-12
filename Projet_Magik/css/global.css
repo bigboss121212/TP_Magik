@@ -20,6 +20,16 @@ body {
     background-size: cover;
 }
 
+#error{
+    z-index: 1;
+    position: absolute;
+    top: 10%;
+    margin: auto;
+    width: 100%;
+    color:red;
+    text-align:center;
+}
+
 #login{
     /* background-color: rgb(300, 170, 50); */
     background-color: white;
