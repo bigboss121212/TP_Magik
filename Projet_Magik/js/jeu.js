@@ -43,11 +43,12 @@ const gameUpdate = data => {
         classH.innerHTML = data.heroClass + "\n";
         classH.innerHTML += "\n";
         classH.innerHTML += "my turn:" + data.yourTurn;
-        vie.innerHTML = "vie: " + data.hp;
-        temps.innerHTML = "temps: " + data.remainingTurnTime;
-        magie.innerHTML = "mp: " + data.mp;
-        nbCarte.innerHTML = "carte: " + data.remainingCardsCount;
-        endturn.innerHTML = "END TURN"
+        vie.innerHTML = "VIE: " + data.hp;
+        temps.innerHTML = "TEMPS: " + data.remainingTurnTime;
+        magie.innerHTML = "MP: " + data.mp;
+        nbCarte.innerHTML = "CARTES: " + data.remainingCardsCount;
+        endturn.innerHTML = "END TURN";
+        nbCarte.style.verticalAlign = "center";
 
         classH.addEventListener('click', function(){
             if(data.yourTurn == true){
@@ -92,19 +93,19 @@ const gameUpdate = data => {
                 newP.className = "infoCarte";
                 newP.textContent = "atk: " + element.atk;
                 newP.style.position = "fixed";
-                newP.style.top = 15+"%";
+                newP.style.top = 20+"%";
 
                 let newP1 = document.createElement("p");
                 newP1.className = "infoCarte";
                 newP1.textContent = "cost: " + element.cost;
                 newP1.style.position = "fixed";
-                newP1.style.top = 25+"%";
+                newP1.style.top = 30+"%";
                 
                 let newP2 = document.createElement("p");
                 newP2.className = "infoCarte";
                 newP2.textContent = "hp: " + element.hp;
                 newP2.style.position = "fixed";
-                newP2.style.top = 35+"%";
+                newP2.style.top = 40+"%";
 
                 let newP3 = document.createElement("p");
                 newP3.className = "infoCarte";

@@ -44,7 +44,9 @@
 
 
 		<div id="abandonne">
-			<div id="boutonA"></div>	
+			<section id="boutonA">
+				<p>END TURN</p>
+			</section>	
 		</div>
 
 	</body>

@@ -122,7 +122,6 @@ li{
 #jeuAdversaire{
     width: 100%;
     height: 150px;
-    background-color: #2196F3;
     z-index: 1;
     position: absolute;
     top: 10%;
@@ -152,13 +151,14 @@ li{
     padding: 10px;
     margin : 10px;
     margin-left: 20px;
+    border-radius: 15%;
 }
 
 #infoAdv{
     display: grid;
     grid-template-columns: auto auto auto auto auto;
     grid-template-rows: auto;
-    background-color: red;
+    background-color: rgb(189, 161, 6);
     z-index: 1;
     height: 100px;
     width: 50%;
@@ -191,7 +191,7 @@ li{
 }
 
 #infoAHp{
-    background-color: yellow;
+    
     z-index: 1;
     height: 50px;
     width: 50px;
@@ -199,10 +199,14 @@ li{
     margin : 10px;
     font-size: 15px;
     text-align: center;
+    background-image:url('../images/coeur.png');
+    background-size:     cover;                    
+    background-repeat:   no-repeat;
+    background-position: center center;
 }
 
 #infoACa{
-    background-color: yellow;
+    
     z-index: 1;
     height: 50px;
     width: 50px;
@@ -210,10 +214,14 @@ li{
     margin : 10px;
     font-size: 15px;
     text-align: center;
+    background-image:url('../images/card.png');
+    background-size:     cover;                    
+    background-repeat:   no-repeat;
+    background-position: center center;
 }
 
 #infoAMp{
-    background-color: yellow;
+    
     z-index: 1;
     height: 50px;
     width: 50px;
@@ -221,6 +229,10 @@ li{
     margin : 10px;
     font-size: 15px;
     text-align: center;
+    background-image:url('../images/mana.png');
+    background-size:     cover;                    
+    background-repeat:   no-repeat;
+    background-position: center center;
 }
 
 
@@ -237,7 +249,7 @@ li{
 
 #jeuAdv{
     width:100%;
-    height: 150px;
+    height: 200px;
     z-index: 1;
     display:flex;
     top: 30%;
@@ -252,16 +264,18 @@ li{
     margin : 10px;
     font-size: 30px;
     text-align: center;
-    height: 120px;
-    width: 90px;
+    height: 180px;
+    width: 130px;
     z-index: 1;
+    border-radius: 15%;
 }
 
 .imageCarte{
     margin:auto;
     width: 80%;
     height: 45%;
-    top: 5%;
+    top: 10%;
+    margin-top: 10px;
     background-color: antiquewhite;
     border: 1px solid rgba(0, 0, 0, 0.8);
 }
@@ -274,7 +288,7 @@ li{
 
 #jeuPlayer{
     width:100%;
-    height: 150px;
+    height: 200px;
     z-index: 1;
     display:flex;
     bottom: 35%;
@@ -288,7 +302,7 @@ li{
     display: grid;
     z-index: 1;
     position: absolute;
-    bottom: 0px; 
+    bottom: 100px; 
     height: 200px;
     width: 200px;
     margin-left: 50px;
@@ -299,7 +313,6 @@ li{
 #grid-container {
     display: grid;
     grid-template-columns: auto auto auto auto auto auto auto auto;
-    background-color: #2196F3;
     padding: 10px;
     position: absolute;
     bottom: 0px; 
@@ -317,6 +330,8 @@ li{
     height: 140px;
     width: 90px;
     z-index: 1;
+    border-radius: 15%;
+    
 }
 
 .grid-item > p {
@@ -337,13 +352,17 @@ li{
 #classH{
     z-index: 1;
     position: absolute;
-    bottom: 25%; 
-    background-color: #2196F3;
+    bottom: 15%; 
+    background-image:url('../images/ku.png');
+    background-size:     cover;                    
+    background-repeat:   no-repeat;
+    background-position: center center;
     height: 40px;
     width: 100px;
     right: 0px;
     left: 50%;
     transform: translate(-50%);
+    padding: 100px 20px;
 }
 
 #nbCarte{
@@ -355,7 +374,15 @@ li{
     grid-column-end: 2;
     grid-row-start: 1;
     grid-row-end: 1;
-    background-color: red;
+    
+    background-image:url('../images/card.png');
+    background-size:     cover;                    
+    background-repeat:   no-repeat;
+    background-position: center center;
+    padding: 30px 20px 0 20px; 
+  
+
+   
 }
 
 #vie{
@@ -365,9 +392,16 @@ li{
     position: absolute;
     grid-column-start: 3;
     grid-column-end: 3;
-    grid-row-start: 2;
-    grid-row-end: 2;
-    background-color: red;
+    grid-row-start: 3;
+    grid-row-end: 3;
+    
+    background-image:url('../images/coeur.png');
+    background-size:     cover;                    
+    background-repeat:   no-repeat;
+    background-position: center center;
+    padding: 30px 20px 0 20px; 
+   
+    
 }
 
 #temps{
@@ -379,7 +413,12 @@ li{
     grid-column-end: 2;
     grid-row-start: 3;
     grid-row-end: 3;
-    background-color: red;
+
+    background-image:url('../images/sablier.png');
+    background-size:     cover;                    
+    background-repeat:   no-repeat;
+    background-position: center center;
+    padding: 30px 20px 0 20px; 
 }
 
 #magie{
@@ -389,9 +428,15 @@ li{
     position: absolute;
     grid-column-start: 1;
     grid-column-end: 1;
-    grid-row-start: 2;
-    grid-row-end: 2;
-    background-color: red;
+    grid-row-start: 3;
+    grid-row-end: 3;
+
+    background-image:url('../images/mana.png');
+    background-size:     cover;                    
+    background-repeat:   no-repeat;
+    background-position: center center;
+    padding: 30px 20px 0 20px; 
+    
 }
 
 #boutonA{
@@ -399,11 +444,18 @@ li{
     width: 33%;
     z-index: 1;
     position: absolute;
+    display: flex;
     bottom: 33%;
     left: 50%;
     transform: translate(-50%);
-    background-color: red;
+    
+    padding: 30px 60px 0 60px;
+    background-image:url('../images/fleche.png');
+    background-size:     cover;                    
+    background-repeat:   no-repeat;
+    background-position: center center; 
 
+    
 }
 
 
