@@ -8,16 +8,19 @@
 	require_once("partial/header.php");
 
 ?>
+
+
 		<div id="jeuAdversaire">
 			<div id="carteAdv"></div>
 			<div id="infoAdv">
-				<p id="infoACl"></p>
 				<p id="infoAN"></p>
 				<p id="infoAHp"></p>
 				<p id="infoACa"></p>
 				<p id="infoAMp"></p>
 			</div>
 		</div>
+
+		<div id="partieTermine" style="opacity: 0;"></div>
 		
 		<div id="background_3"></div>
 
@@ -44,9 +47,9 @@
 
 
 		<div id="abandonne">
-			<section id="boutonA">
-				<p>END TURN</p>
-			</section>	
+			<div id="boutonA">
+				END TURN
+			</div>	
 		</div>
 
 	</body>

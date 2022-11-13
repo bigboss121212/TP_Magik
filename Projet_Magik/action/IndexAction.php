@@ -28,6 +28,7 @@
 
                     $result["visibility"] = 1;
                     $_SESSION["visibility"] = $result["visibility"];
+                    $_SESSION["username"] = $_POST["champCourriel"];
                     // Pour voir les informations retournées : var_dump($result);exit;
                     $_SESSION['key'] = $resultat->key;
                 }

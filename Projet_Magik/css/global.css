@@ -99,6 +99,11 @@ body {
 	list-style-type:none;
 }
 
+#menu p{
+    position:absolute;
+    left: 10%;
+}
+
 li{
     background-color: orange;
     font-family: Arial, Helvetica, sans-serif;
@@ -132,7 +137,6 @@ li{
     display: grid;
     grid-template-columns: auto auto auto auto auto auto auto auto;
     grid-template-rows: auto;
-    background-color: red;
     z-index: 1;
     height: 100px;
     width: 50%;
@@ -180,7 +184,6 @@ li{
 }
 
 #infoAN{
-    background-color: yellow;
     z-index: 1;
     height: 50px;
     width: 50px;
@@ -188,6 +191,10 @@ li{
     margin : 10px;
     font-size: 15px;
     text-align: center;
+    background-image:url('../images/ball.png');
+    background-size:     cover;                    
+    background-repeat:   no-repeat;
+    background-position: center center;
 }
 
 #infoAHp{
@@ -379,10 +386,7 @@ li{
     background-size:     cover;                    
     background-repeat:   no-repeat;
     background-position: center center;
-    padding: 30px 20px 0 20px; 
-  
-
-   
+    padding: 40px 25px 10px 25px; 
 }
 
 #vie{
@@ -400,6 +404,7 @@ li{
     background-repeat:   no-repeat;
     background-position: center center;
     padding: 30px 20px 0 20px; 
+    margin-left: 30px;
    
     
 }
@@ -430,13 +435,11 @@ li{
     grid-column-end: 1;
     grid-row-start: 3;
     grid-row-end: 3;
-
     background-image:url('../images/mana.png');
     background-size:     cover;                    
     background-repeat:   no-repeat;
     background-position: center center;
     padding: 30px 20px 0 20px; 
-    
 }
 
 #boutonA{
@@ -448,16 +451,24 @@ li{
     bottom: 33%;
     left: 50%;
     transform: translate(-50%);
-    
     padding: 30px 60px 0 60px;
     background-image:url('../images/fleche.png');
     background-size:     cover;                    
     background-repeat:   no-repeat;
     background-position: center center; 
-
-    
 }
 
+
+#partieTermine{
+    z-index: 1;
+    position: fixed;
+    height: 200px;
+    width: 200px;
+    background-color: brown;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
 
 
 

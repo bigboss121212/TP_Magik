@@ -14,7 +14,11 @@ const state = () => {
     .then(data => {
         
         if(data == "LAST_GAME_WON" || data == "LAST_GAME_LOST"){
-            window.location="loby.php";
+
+            let partieTerm = document.getElementById("partieTermine");
+            partieTerm.style.opacity = 1;
+
+            // window.location="loby.php";
         }
         console.log(data); // contient les cartes/état du jeu.
         dataG = data;
@@ -86,6 +90,12 @@ const gameUpdate = data => {
 
                 let newImage = document.createElement("div");
                 newImage.className = "imageCarte";
+
+                
+                newImage.style.backgroundSize = "cover";
+                newImage.style.backgroundRepeat = "no-repeat";
+                newImage.style.backgroundPosition = "center center";
+                newImage.style.backgroundImage = "url('./images/image_carte/" + element.id + ".png')";
                 
                 newDiv.appendChild(newImage);
 
@@ -151,13 +161,13 @@ const gameUpdate = data => {
         sizePlay = data.hand.length;
 
         // afficher les infos adverses
-        let infoAdv = document.getElementById("infoACl");
+        
         let infoAN = document.getElementById("infoAN");
         let infoAHp = document.getElementById("infoAHp");
         let infoACa = document.getElementById("infoACa");
         let infoAMp = document.getElementById("infoAMp");
 
-        infoAdv.textContent = "Class: " + data.opponent.heroClass;
+        
         infoAN.textContent = "Name: " + data.opponent.username;
         infoAHp.textContent = "Hp: " + data.opponent.hp;
         infoACa.textContent = "Remaining Card: " + data.opponent.remainingCardsCount;
@@ -236,6 +246,10 @@ const gameUpdate = data => {
 
             let newImage = document.createElement("div");
             newImage.className = "imageCarte";
+            newImage.style.backgroundSize = "cover";
+            newImage.style.backgroundRepeat = "no-repeat";
+            newImage.style.backgroundPosition = "center center";
+            newImage.style.backgroundImage = "url('./images/image_carte/" + element.id + ".png')";
             
             newDiv.appendChild(newImage);
 
@@ -262,6 +276,13 @@ const gameUpdate = data => {
             newP3.textContent = "mechanics: " + element.mechanics;
     
             newDiv.append(newP, newP1, newP2, newP3);
+
+            if(element.state == "IDLE"){
+                newDiv.style.opacity = 1;
+            }
+            else if(element.state == "SLEEP"){
+                newDiv.style.opacity = 0.5;
+            }
 
             if(element.mechanics.includes("Taunt")){
                 newDiv.style.boxShadow = "0 0 60px 30px #fcffa4"
@@ -307,6 +328,10 @@ const gameUpdate = data => {
 
             let newImage = document.createElement("div");
             newImage.className = "imageCarte";
+            newImage.style.backgroundSize = "cover";
+            newImage.style.backgroundRepeat = "no-repeat";
+            newImage.style.backgroundPosition = "center center";
+            newImage.style.backgroundImage = "url('./images/image_carte/" + element.id + ".png')";
             
             newDiv.appendChild(newImage);
 
@@ -333,6 +358,13 @@ const gameUpdate = data => {
             newP3.textContent = "mechanics: " + element.mechanics;
     
             newDiv.append(newP, newP1, newP2, newP3);
+
+            if(element.state == "IDLE"){
+                newDiv.style.opacity = 1;
+            }
+            else if(element.state == "SLEEP"){
+                newDiv.style.opacity = 0.5;
+            }
 
             if(element.mechanics.includes("Taunt")){
                 newDiv.style.boxShadow = "0 0 60px 30px #fcffa4"

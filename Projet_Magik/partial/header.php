@@ -41,6 +41,7 @@
             if($data["isConnected"] > 0){
                 ?>
                     <div id="menu">
+                        <p><?= "BIENVNUE " . $_SESSION["username"]  ?></p>
                         <ul>
                             <li><a href="loby.php">Loby</a></li>
                             <li><a href="pageDeck.php">PageDeck</a></li>
