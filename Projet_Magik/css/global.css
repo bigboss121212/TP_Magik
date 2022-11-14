@@ -171,7 +171,7 @@ li{
     position: absolute;
 }
 
-#infoACl{
+/* #infoACl{
     background-color: yellow;
     z-index: 1;
     height: 50px;
@@ -181,7 +181,7 @@ li{
     font-size: 15px;
     text-align: center;
     
-}
+} */
 
 #infoAN{
     z-index: 1;
@@ -259,7 +259,7 @@ li{
     height: 200px;
     z-index: 1;
     display:flex;
-    top: 30%;
+    top: 25%;
     position: absolute;
     border: 1px solid rgba(0, 0, 0, 0.8);
     justify-content: center;
@@ -291,6 +291,8 @@ li{
     margin-left: 10px;
     font-size: 10px;
     text-align: left;
+    color: white;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
 #jeuPlayer{
@@ -404,7 +406,7 @@ li{
     background-repeat:   no-repeat;
     background-position: center center;
     padding: 30px 20px 0 20px; 
-    margin-left: 30px;
+    margin-left: 20px;
    
     
 }
@@ -435,11 +437,13 @@ li{
     grid-column-end: 1;
     grid-row-start: 3;
     grid-row-end: 3;
+
     background-image:url('../images/mana.png');
     background-size:     cover;                    
     background-repeat:   no-repeat;
     background-position: center center;
     padding: 30px 20px 0 20px; 
+    margin-right: 30px;
 }
 
 #boutonA{

@@ -41,14 +41,14 @@
             if($data["isConnected"] > 0){
                 ?>
                     <div id="menu">
-                        <p><?= "BIENVNUE " . $_SESSION["username"]  ?></p>
+                        <p><?= "BIENVENU " . $_SESSION["username"]  ?></p>
                         <ul>
                             <li><a href="loby.php">Loby</a></li>
                             <li><a href="pageDeck.php">PageDeck</a></li>
                             <li><a href="stats.php">Stats</a></li>
                             <li><a href="?logout=true">Deconnexion</a></li>
-                            <li><a href="training.php">Training</a></li>
-                            <li><a href="jeu.php">PVP</a></li>
+                            <li><a href="jeu.php?pvp=false">Training</a></li>
+                            <li><a href="jeu.php?pvp=true">PVP</a></li>
                         </ul>
                     </div>
                 <?php

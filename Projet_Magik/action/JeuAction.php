@@ -11,8 +11,16 @@
 
             $data = [];
             $data["key"] = $_SESSION["key"];
-            $data["type"] = "PVP";
 
+            if (!empty($_GET["pvp"])) {
+                if($_GET["pvp"] == "false"){
+                    $data["type"] = "TRAINING";
+                }
+                if($_GET["pvp"] == "true"){
+                    $data["type"] = "PVP";
+                }   
+            }
+    
             $service = "games/auto-match"; 
 
             $resultat = parent::callAPI($service, $data);
