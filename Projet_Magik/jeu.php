@@ -9,7 +9,6 @@
 
 ?>
 
-
 		<div id="jeuAdversaire">
 			<div id="carteAdv"></div>
 			<div id="infoAdv">
@@ -20,8 +19,11 @@
 			</div>
 		</div>
 
-		<div id="partieTermine" style="opacity: 0;"></div>
-		
+		<div id="partieTermine" style="display:none;">
+			<div id="text"></div>
+			<a href="loby.php"><input id="back" type=button value='RETOUR'></a>
+		</div>
+	
 		<div id="background_3"></div>
 
 		<div id="jeuAdv"></div>

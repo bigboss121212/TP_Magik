@@ -6,6 +6,8 @@ let dataG = null
 let attaquer = false;
 let carteActionUID = null;
 
+
+
 const state = () => {
     fetch("ajax-state.php", {   // Il faut créer cette page et son contrôleur appelle 
         method : "POST"        // l’API (games/state)
@@ -15,8 +17,20 @@ const state = () => {
         
         if(data == "LAST_GAME_WON" || data == "LAST_GAME_LOST"){
 
+            delCarteAdv();
+            delCartePlay();
             let partieTerm = document.getElementById("partieTermine");
-            partieTerm.style.opacity = 1;
+            let text = document.getElementById("text");
+            partieTerm.style.display = "block";
+            partieTerm.style.fontSize = "x-large";
+
+            if(data == "LAST_GAME_WON"){
+                text.innerHTML = "VOUS AVEZ GAGNE!"
+            }
+            else if(data == "LAST_GAME_LOST"){
+                
+                text.innerHTML =("VOUS AVEZ PERDU!!"); 
+            }
 
             // window.location="loby.php";
         }
@@ -403,6 +417,20 @@ const gameUpdate = data => {
         boardAdv = data.opponent.board.length;
     }
 
+}
+
+function delCarteAdv(){
+    let boardA = document.getElementById("jeuAdv");
+        while (boardA.hasChildNodes()) { //enlever tous les enfants
+            boardA.removeChild(boardA.lastChild);
+        }
+}
+
+function delCartePlay(){
+    let boardJ = document.getElementById("jeuPlayer");
+    while (boardJ.hasChildNodes()) { //enlever tous les enfants
+        boardJ.removeChild(boardJ.lastChild);
+    }
 }
 
 
