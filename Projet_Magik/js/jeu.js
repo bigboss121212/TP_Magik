@@ -5,6 +5,7 @@ let sizePlay = 0;
 let dataG = null
 let attaquer = false;
 let carteActionUID = null;
+let chatAfficher = false;
 
 
 
@@ -34,6 +35,12 @@ const state = () => {
 
             // window.location="loby.php";
         }
+        if (typeof data !== "object") {
+            if(data != null){
+                let update = document.getElementById("erreur");
+                update.innerHTML = data;  
+            }  
+        }
         console.log(data); // contient les cartes/état du jeu.
         dataG = data;
         gameUpdate(data);
@@ -57,6 +64,8 @@ const gameUpdate = data => {
         let magie = document.getElementById("magie");
         let nbCarte = document.getElementById("nbCarte");
         let endturn = document.getElementById("boutonA");
+        let endPartie = document.getElementById("boutonB");
+        let bchat = document.getElementById("boutonChat");
 
         classH.innerHTML = data.heroClass + "\n";
         classH.innerHTML += "\n";
@@ -68,27 +77,61 @@ const gameUpdate = data => {
         endturn.innerHTML = "END TURN";
         nbCarte.style.verticalAlign = "center";
 
+        //pour le hero power
         classH.addEventListener('click', function(){
-            if(data.yourTurn == true){
-                if(!data.heroPowerAlreadyUsed){
-                    fetch("ajax-heroPower.php", {})
-                    .then(response => response.json())
-                    .then(data => {
-                        console.log(data);
-                    })
+            fetch("ajax-heroPower.php", {})
+            .then(response => response.json())
+            .then(data => {
+                if (typeof data !== "object") {
+                    if(data != null){
+                        let update = document.getElementById("erreur");
+                        update.innerHTML = data;  
+                    }  
                 }
+                console.log(data);
+            })
+        });
+
+        //pour terminer un tour
+        endturn.addEventListener('click', function(e){   
+            fetch("ajax-end-turn.php", {})
+            .then(response => response.json())
+            .then(data => {
+                if (typeof data !== "object") {
+                    if(data != null){
+                        let update = document.getElementById("erreur");
+                        update.innerHTML = data;  
+                    }  
+                }
+                console.log(data);
+                e.stopPropagation();
+            })
+        });
+
+        //pour abandonner une partie
+        endPartie.addEventListener('click', function(e){
+            fetch("ajax-end-game.php", {})
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                e.stopPropagation();
+                window.location="loby.php";
+            })
+        });
+
+        //pour le chat
+        bchat.addEventListener('click', function(){
+            let chat = document.getElementById("chatGame");
+            if(!chatAfficher){
+                chat.style.opacity = 1;
+                chatAfficher = true;
+            }
+            else if(chatAfficher){
+                chat.style.opacity = 0;
+                chatAfficher = false;
             }
         });
 
-        endturn.addEventListener('click', function(){
-            if(data.yourTurn == true){
-                fetch("ajax-end-turn.php", {})
-                .then(response => response.json())
-                .then(data => {
-                    console.log(data);
-                })
-            }
-        });
 
         //afficher les cates du joueur
         if(data.hand.length != sizePlay){
@@ -148,24 +191,26 @@ const gameUpdate = data => {
                 }
                 //function pour jouer une carte lorsque c'est notre tour
                 newDiv.addEventListener('click', function(){
-                    if(data.yourTurn == true){
-                        if(data.mp >= element.cost){
-                            data.mp -= element.cost;
-                            
-                            let formdata = new FormData();
-                            formdata.append("uid", element.uid)
-                            fetch("ajax-carte.php", {
-                                method: "post",
-                                body: formdata
-                            })
-                            .then(response => response.json())
-                            .then(data => {
-                                console.log(data);
-                            })
-                            
+                    let formdata = new FormData();
+                    formdata.append("uid", element.uid)
+                    fetch("ajax-carte.php", {
+                        method: "post",
+                        body: formdata
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (typeof data !== "object") {
+                            if(data != null){
+                                let update = document.getElementById("erreur");
+                                update.innerHTML = data;  
+                            }
                         }
-                        
-                    }
+                        else{
+                            data.mp -= element.cost;
+                            console.log("Carte joue");
+                            refreshCartePlay();
+                        }
+                    })          
                 });
 
                 carte.prepend(newDiv);                
@@ -189,7 +234,7 @@ const gameUpdate = data => {
 
 
         infoAN.addEventListener('click', function(){ //faire verification si les cartes ADV on taunt
-            if(attaquer){
+            // if(attaquer){
                 let formdata = new FormData();
                 formdata.append("uidAdv", 0);
                 formdata.append("uidPlay", carteActionUID);
@@ -200,12 +245,19 @@ const gameUpdate = data => {
                 })
                 .then(response => response.json())
                 .then(data => {
+                    if (typeof data !== "object") {
+                        if(data != null){
+                            let update = document.getElementById("erreur");
+                            update.innerHTML = data;  
+                        }  
+                    }
+                    else{
+                        attaquer = false;
+                        carteActionUID = null;
+                    }
                     console.log(data);
-                })
-
-                attaquer = false;
-                carteActionUID = null;
-            }
+                })  
+            // }
         });
        
         // console.log(data.opponent);
@@ -234,7 +286,7 @@ const gameUpdate = data => {
         boardAdv = data.opponent.board.length;
 
 
-        //pour afficher les donnees du joueur
+        //pour afficher le board du joueur
 
         if(data.board.length != boardPl){
             refreshCartePlay();
@@ -391,9 +443,8 @@ const gameUpdate = data => {
             }
 
             newDiv.addEventListener('click', function(){
-                if(!(element.mechanics.includes("Stealth"))){
-                    if(attaquer){
-                        
+                // if(!(element.mechanics.includes("Stealth"))){
+                    // if(attaquer){
                         let formdata = new FormData();
                         formdata.append("uidAdv", element.uid);
                         formdata.append("uidPlay", carteActionUID);
@@ -404,13 +455,21 @@ const gameUpdate = data => {
                         })
                         .then(response => response.json())
                         .then(data => {
+                            if (typeof data !== "object") {
+                                if(data != null){
+                                    let update = document.getElementById("erreur");
+                                    update.innerHTML = data;  
+                                }  
+                            }
+                            else{
+                                attaquer = false;
+                                carteActionUID = null;
+                            }
                             console.log(data);
                         })
-
-                        attaquer = false;
-                        carteActionUID = null;
-                    }
-                }
+                        refreshCarteAdv();
+                    // }
+                // }
             });
             boardA.prepend(newDiv);                
         });

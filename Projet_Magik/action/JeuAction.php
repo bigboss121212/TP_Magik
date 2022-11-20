@@ -24,8 +24,6 @@
             $service = "games/auto-match"; 
 
             $resultat = parent::callAPI($service, $data);
-
-            echo $resultat;
             
             return [];
         }

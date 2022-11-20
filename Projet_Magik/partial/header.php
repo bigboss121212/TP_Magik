@@ -38,7 +38,9 @@
     </head>
     <body>
         <?php
-            if($data["isConnected"] > 0){
+
+            if(!($pageTitre == "Training" || $pageTitre == "PVP" )){
+                if($data["isConnected"] > 0){
                 ?>
                     <div id="menu">
                         <p><?= "BIENVENU " . $_SESSION["username"]  ?></p>
@@ -52,7 +54,9 @@
                         </ul>
                     </div>
                 <?php
+                }
             }
+
         ?>
     
   

@@ -78,7 +78,7 @@ body {
     position: relative;
     z-index: 1;
     display: inline-block;
-    margin-top: 10%;
+    margin-top: 20%;
     background-color: white;
 } 
 
@@ -129,8 +129,6 @@ li{
     height: 150px;
     z-index: 1;
     position: absolute;
-    top: 10%;
-    position: absolute;
 }
 
 #carteAdv{
@@ -162,7 +160,7 @@ li{
     display: grid;
     grid-template-columns: auto auto auto auto auto;
     grid-template-rows: auto;
-    background-color: rgb(189, 161, 6);
+    
     z-index: 1;
     height: 100px;
     width: 50%;
@@ -246,7 +244,7 @@ li{
 #background_3{
     margin: auto;
     position:absolute;
-    background-image:url('../images/battlefield2.jpg');
+    background-image:url('../images/fond3.jpg');
     width:100%;
     height: 100%;
     background-position: center;
@@ -349,15 +347,66 @@ li{
     text-align: left;
 }
 
+
+
 #abandonne{
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto auto;
     z-index: 1;
     position: absolute;
     bottom: 0px; 
-    height: 200px;
+    height: 400px;
     width: 200px;
     right: 0px;
     margin-right: 50px;
 }
+
+#boutonA{
+    height: 33%;
+    width: 33%;
+    
+    bottom: 33%;
+    left: 50%;
+    transform: translate(-50%);
+    padding: 35px 60px 0 60px;
+    background-image:url('../images/fleche.png');
+    background-size:     cover;                    
+    background-repeat:   no-repeat;
+    background-position: center center; 
+}
+
+#boutonB{
+    height: 36%;
+    width: 33%;
+    
+    bottom: 33%;
+    left: 50%;
+    transform: translate(-50%);
+    padding: 35px 60px 0 60px;
+    margin-right: 20px;
+    background-image:url('../images/fleche.png');
+    background-size:     cover;                    
+    background-repeat:   no-repeat;
+    background-position: center center; 
+}
+
+#boutonA > p{
+    height: fit-content;
+    text-align:center; 
+    vertical-align: middle;
+    display: table-cell;
+}
+
+#boutonB > p{
+    padding-top: 10px;
+    margin-right: 30px;
+    height: fit-content;
+    text-align:center; 
+    vertical-align: middle;
+    display: table-cell;
+}
+
 
 #classH{
     z-index: 1;
@@ -373,6 +422,34 @@ li{
     left: 50%;
     transform: translate(-50%);
     padding: 100px 20px;
+}
+
+#boutonChat{
+    z-index: 1;
+    position: absolute; 
+    height: 30px;
+    width: 55px;
+    left: 3%;
+    border: 2px solid rgba(0, 0, 0, 0.8);
+    text-align:center; 
+    top: 10%;
+    padding-top: 10px;
+    background-color: burlywood;
+}
+
+#erreur{
+    z-index: 1;
+    position: absolute;
+    background-color: burlywood;
+    height: 30px;
+    width: 250px;
+    bottom: 25%;
+    left: 3%;
+    border: 2px solid rgba(0, 0, 0, 0.8);
+    text-align:center; 
+    vertical-align: middle;
+    display: table-cell;
+    padding-top: 10px;
 }
 
 #nbCarte{
@@ -401,7 +478,6 @@ li{
     grid-column-end: 3;
     grid-row-start: 3;
     grid-row-end: 3;
-    
     background-image:url('../images/coeur.png');
     background-size:     cover;                    
     background-repeat:   no-repeat;
@@ -446,23 +522,6 @@ li{
     padding: 30px 20px 0 20px; 
     margin-right: 30px;
 }
-
-#boutonA{
-    height: 33%;
-    width: 33%;
-    z-index: 1;
-    position: absolute;
-    display: flex;
-    bottom: 33%;
-    left: 50%;
-    transform: translate(-50%);
-    padding: 30px 60px 0 60px;
-    background-image:url('../images/fleche.png');
-    background-size:     cover;                    
-    background-repeat:   no-repeat;
-    background-position: center center; 
-}
-
 
 #partieTermine{
     z-index: 1;

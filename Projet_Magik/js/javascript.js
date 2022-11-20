@@ -10,12 +10,12 @@ const applyStyles = iframe => {
 		// fontGoogleName : "Sofia",
 		fontSize : "20px",
 		hideIcons : false, //(or true),
-		inputBackgroundColor : "red",
-		inputFontColor : "blue",
+		inputBackgroundColor : "#333",
+		inputFontColor : "white",
 		height : "600px",
 		memberListFontColor : "#ff00dd",
 		memberListBackgroundColor : "white",
-        paddingTop: "200px"
+        paddingTop: "300px"
 	}
 	
 	setTimeout(() => {

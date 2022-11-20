@@ -37,6 +37,14 @@
 		</div>
 
 		<div id="classH"></div>
+		
+		<div id="boutonChat">CHAT</div>
+		<iframe id="chatGame" style="width:700px;height:240px;z-index:1;position:absolute;top:15%;left:3%;opacity:0;" 
+        src="https://magix.apps-de-cours.com/server/#/chat/<?=$_SESSION['key'] ?>">
+		</iframe>
+
+
+		<div id ="erreur">UPDATE...</div>
 
 		<div id="infoPerso">
 			<div id="nbCarte"></div>
@@ -50,8 +58,11 @@
 
 		<div id="abandonne">
 			<div id="boutonA">
-				END TURN
+				<p>END TURN</p>	
 			</div>	
+			<div id="boutonB">
+				<p>SURRENDER</p>
+			</div>
 		</div>
 
 	</body>
