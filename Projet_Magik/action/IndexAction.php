@@ -1,6 +1,5 @@
 <?php
     require_once("action/CommonAction.php");
-    require_once("action/DAO/UserDAO.php");
 
     class IndexAction extends CommonAction {
 

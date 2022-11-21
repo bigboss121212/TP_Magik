@@ -78,7 +78,7 @@ body {
     position: relative;
     z-index: 1;
     display: inline-block;
-    margin-top: 20%;
+    margin-top: 17%;
     background-color: white;
 } 
 
@@ -90,7 +90,7 @@ body {
 	text-align:right;
     z-index: 1;
     position:absolute;
-    background-color: orangered;
+    background-color: rgb(149, 171, 192);
 
 }
 
@@ -105,7 +105,7 @@ body {
 }
 
 li{
-    background-color: orange;
+    background-color: rgb(226, 192, 128);
     font-family: Arial, Helvetica, sans-serif;
     font-size : 20px;
     margin: 0 10px 0 10px;

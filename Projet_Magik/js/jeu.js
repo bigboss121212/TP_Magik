@@ -93,7 +93,9 @@ const gameUpdate = data => {
         });
 
         //pour terminer un tour
-        endturn.addEventListener('click', function(e){   
+        endturn.onclick = terminerTour;
+        
+        function terminerTour(){   
             fetch("ajax-end-turn.php", {})
             .then(response => response.json())
             .then(data => {
@@ -104,17 +106,16 @@ const gameUpdate = data => {
                     }  
                 }
                 console.log(data);
-                e.stopPropagation();
+               
             })
-        });
+        };
 
         //pour abandonner une partie
-        endPartie.addEventListener('click', function(e){
+        endPartie.addEventListener('click', function(){
             fetch("ajax-end-game.php", {})
             .then(response => response.json())
             .then(data => {
                 console.log(data);
-                e.stopPropagation();
                 window.location="loby.php";
             })
         });
@@ -208,6 +209,21 @@ const gameUpdate = data => {
                         else{
                             data.mp -= element.cost;
                             console.log("Carte joue");
+                            //pour comptabiliser le nbr de fois qu'une carte est joue, pour les stats
+                            // let formdata = new FormData();
+                            // formdata.append("id", element.id);
+                            // formdata.append("count", 1);
+    
+                            // fetch("ajax-carte-count.php", {
+                            //     method: "post",
+                            //     body: formdata
+                            // })
+                            // .then(response => response.json())
+                            // .then(data => {
+                            
+                            //     console.log("hello");
+                            //     console.log(data);
+                            // })
                             refreshCartePlay();
                         }
                     })          
