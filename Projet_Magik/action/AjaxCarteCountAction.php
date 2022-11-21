@@ -10,13 +10,13 @@
 
         protected function executeAction() {
             
-            $card = [];
+            $cards = [];
 
             if (!empty($_POST["id"]) && !empty($_POST["count"])) {
 				CardDAO::addCardCount($_POST["id"],$_POST["count"]);
             }
             
-            $card = CardDAO::getCardCount(); 
+            $cards = CardDAO::getCardCount(); 
             return compact("cards");
         }
     }

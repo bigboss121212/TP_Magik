@@ -6,8 +6,26 @@
         public static function addCardCount($id, $count) {
             $connection = Connection::getConnection();
 
-            // $statement = $connection->prepare("INSERT INTO cartes (id, nbrjouer) VALUES (?, ?)");
-            $statement = $connection->prepare("INSERT INTO cartes (nbrjouer) WHERE id = ? VALUES (?)");
+            //verifier d`abord si la carte est dans la db
+            $statement = $connection->prepare("SELECT nbrJouer FROM cartes WHERE id = ?");
+            $statement->bindParam(1, $id);
+            $statement->setFetchMode(PDO::FETCH_ASSOC);
+            $statement->execute();
+            $result = $statement->fetch();
+
+            if($result == null){
+                $statement = $connection->prepare("INSERT INTO cartes (id, nbrjouer) VALUES (?, ?)");
+            }
+            else{
+                $statement = $connection->prepare("UPDATE cartes SET nbrjouer = ? WHERE id = ?");
+
+                $statement->bindParam(1, $id);
+
+                $int_value = intval( $count );
+                $int_value2 = intval( $result[array_keys($result)[0]] );
+                $var2 = strval($int_value + $int_value2);
+                $statement->bindParam(2, $var2);
+            }
 
             $statement->bindParam(1, $id);
             $statement->bindParam(2, $count);

@@ -39,7 +39,7 @@
 		<div id="classH"></div>
 		
 		<div id="boutonChat">CHAT</div>
-		<iframe id="chatGame" style="width:700px;height:240px;z-index:1;position:absolute;top:15%;left:3%;opacity:0;" 
+		<iframe id="chatGame" style="width:700px;height:240px;z-index:1;position:absolute;top:20%;left:3%;opacity:0;" 
         src="https://magix.apps-de-cours.com/server/#/chat/<?=$_SESSION['key'] ?>">
 		</iframe>
 

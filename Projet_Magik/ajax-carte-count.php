@@ -4,4 +4,4 @@
     $action = new AjaxCarteCountAction();
     $data = $action->execute();
 
-    echo json_encode($data["cartes"]); //converti les data php en json
+    echo json_encode($data["cards"]); //converti les data php en json

@@ -78,7 +78,9 @@ const gameUpdate = data => {
         nbCarte.style.verticalAlign = "center";
 
         //pour le hero power
-        classH.addEventListener('click', function(){
+        classH.onclick = heroPower
+        
+        function heroPower(){
             fetch("ajax-heroPower.php", {})
             .then(response => response.json())
             .then(data => {
@@ -90,7 +92,7 @@ const gameUpdate = data => {
                 }
                 console.log(data);
             })
-        });
+        };
 
         //pour terminer un tour
         endturn.onclick = terminerTour;
@@ -111,17 +113,21 @@ const gameUpdate = data => {
         };
 
         //pour abandonner une partie
-        endPartie.addEventListener('click', function(){
+        endPartie.onclick = abandonnePartie;
+
+        function abandonnePartie(){
             fetch("ajax-end-game.php", {})
             .then(response => response.json())
             .then(data => {
                 console.log(data);
                 window.location="loby.php";
             })
-        });
+        };
 
         //pour le chat
-        bchat.addEventListener('click', function(){
+        bchat.onclick = chatOn;
+        
+        function chatOn(){
             let chat = document.getElementById("chatGame");
             if(!chatAfficher){
                 chat.style.opacity = 1;
@@ -131,11 +137,11 @@ const gameUpdate = data => {
                 chat.style.opacity = 0;
                 chatAfficher = false;
             }
-        });
+        };
 
 
         //afficher les cates du joueur
-        if(data.hand.length != sizePlay){
+        //if(data.hand.length != sizePlay){
             let carte = document.getElementById("grid-container");
             while (carte.hasChildNodes()) { //enlever tous les enfants
                 carte.removeChild(carte.lastChild);
@@ -191,7 +197,9 @@ const gameUpdate = data => {
                     newDiv.style.boxShadow = "0 0 60px 30px #f00"
                 }
                 //function pour jouer une carte lorsque c'est notre tour
-                newDiv.addEventListener('click', function(){
+                newDiv.onclick = jouerCarte;
+                
+                function jouerCarte(){
                     let formdata = new FormData();
                     formdata.append("uid", element.uid)
                     fetch("ajax-carte.php", {
@@ -210,30 +218,29 @@ const gameUpdate = data => {
                             data.mp -= element.cost;
                             console.log("Carte joue");
                             //pour comptabiliser le nbr de fois qu'une carte est joue, pour les stats
-                            // let formdata = new FormData();
-                            // formdata.append("id", element.id);
-                            // formdata.append("count", 1);
-    
-                            // fetch("ajax-carte-count.php", {
-                            //     method: "post",
-                            //     body: formdata
-                            // })
-                            // .then(response => response.json())
-                            // .then(data => {
-                            
-                            //     console.log("hello");
-                            //     console.log(data);
-                            // })
+                             let formdata = new FormData();
+                             formdata.append("id", element.id);
+                             formdata.append("count", 1);
+                             fetch("ajax-carte-count.php", {
+                                 method: "post",
+                                 body: formdata
+                             })
+                             .then(response => response.json())
+                             .then(data => {
+                    
+                                 console.log("hello");
+                                 console.log(data);
+                             })
                             refreshCartePlay();
                         }
                     })          
-                });
+                };
 
                 carte.prepend(newDiv);                
             });
 
-        }
-        sizePlay = data.hand.length;
+        //}
+        //sizePlay = data.hand.length;
 
         // afficher les infos adverses
         
@@ -249,7 +256,9 @@ const gameUpdate = data => {
         infoAMp.textContent = "Mp: " + data.opponent.mp;
 
 
-        infoAN.addEventListener('click', function(){ //faire verification si les cartes ADV on taunt
+        infoAN.onclick = attaquerAdv;
+        
+        function attaquerAdv(){ //faire verification si les cartes ADV on taunt
             // if(attaquer){
                 let formdata = new FormData();
                 formdata.append("uidAdv", 0);
@@ -262,10 +271,8 @@ const gameUpdate = data => {
                 .then(response => response.json())
                 .then(data => {
                     if (typeof data !== "object") {
-                        if(data != null){
-                            let update = document.getElementById("erreur");
-                            update.innerHTML = data;  
-                        }  
+                        let update = document.getElementById("erreur");
+                        update.innerHTML = data;  
                     }
                     else{
                         attaquer = false;
@@ -274,7 +281,7 @@ const gameUpdate = data => {
                     console.log(data);
                 })  
             // }
-        });
+        };
        
         // console.log(data.opponent);
 
@@ -295,20 +302,20 @@ const gameUpdate = data => {
         sizeAdv = data.opponent.handSize;
 
         //pour l'affichage du board de l'adversaire
-        if(data.opponent.board.length != boardAdv){
-            refreshCarteAdv(); 
-        }
+        //if(data.opponent.board.length != boardAdv){
+        refreshCarteAdv(); 
+        //}
 
-        boardAdv = data.opponent.board.length;
+        //boardAdv = data.opponent.board.length;
 
 
         //pour afficher le board du joueur
 
-        if(data.board.length != boardPl){
-            refreshCartePlay();
-        }
+        //if(data.board.length != boardPl){
+        refreshCartePlay();
+        //}
 
-        boardPl = data.opponent.board.length;
+        //boardPl = data.opponent.board.length;
     }
 
 
@@ -341,11 +348,11 @@ const gameUpdate = data => {
             newP.style.position = "relative";
             newP.style.top = 0+"%";
 
-            let newP1 = document.createElement("p");
-            newP1.className = "infoCarte";
-            newP1.textContent = "cost: " + element.cost;
-            newP1.style.position = "relative";
-            newP1.style.top = 0+"%";
+            //let newP1 = document.createElement("p");
+            //newP1.className = "infoCarte";
+            //newP1.textContent = "cost: " + element.cost;
+            //newP1.style.position = "relative";
+            //newP1.style.top = 0+"%";
 
             let newP2 = document.createElement("p");
             newP2.className = "infoCarte";
@@ -357,7 +364,7 @@ const gameUpdate = data => {
             newP3.className = "infoCarte";
             newP3.textContent = "mechanics: " + element.mechanics;
     
-            newDiv.append(newP, newP1, newP2, newP3);
+            newDiv.append(newP, newP2, newP3);
 
             if(element.state == "IDLE"){
                 newDiv.style.opacity = 1;
@@ -376,18 +383,16 @@ const gameUpdate = data => {
                 newDiv.style.boxShadow = "0 0 60px 30px #f00"
             }
 
-            newDiv.addEventListener('click', function(){
-                if(data.yourTurn == true){
-                    if(data.mp >= element.cost){
-                        data.mp -= element.cost;
-                        if(element.state != "SLEEP"){
-                            attaquer = true;
-                            data.mp -= element.cost;  
-                            carteActionUID = element.uid;          
-                        }
-                    } 
+            //pour attaquer hero adv
+            newDiv.onclick = attaqueHero;
+            
+            function attaqueHero(){
+                data.mp -= element.cost;
+                if(element.state != "SLEEP"){
+                    attaquer = true;  
+                    carteActionUID = element.uid;          
                 }
-            });
+            };
 
             boardJ.prepend(newDiv);                
         });
@@ -423,11 +428,11 @@ const gameUpdate = data => {
             newP.style.position = "relative";
             newP.style.top = 0+"%";
 
-            let newP1 = document.createElement("p");
-            newP1.className = "infoCarte";
-            newP1.textContent = "cost: " + element.cost;
-            newP1.style.position = "relative";
-            newP1.style.top = 0+"%";
+            //let newP1 = document.createElement("p");
+            //newP1.className = "infoCarte";
+            //newP1.textContent = "cost: " + element.cost;
+            //newP1.style.position = "relative";
+            //newP1.style.top = 0+"%";
 
             let newP2 = document.createElement("p");
             newP2.className = "infoCarte";
@@ -439,7 +444,7 @@ const gameUpdate = data => {
             newP3.className = "infoCarte";
             newP3.textContent = "mechanics: " + element.mechanics;
     
-            newDiv.append(newP, newP1, newP2, newP3);
+            newDiv.append(newP, newP2, newP3);
 
             if(element.state == "IDLE"){
                 newDiv.style.opacity = 1;
@@ -458,7 +463,10 @@ const gameUpdate = data => {
                 newDiv.style.boxShadow = "0 0 60px 30px #f00"
             }
 
-            newDiv.addEventListener('click', function(){
+            //selectionner une carte pour faire une action
+            newDiv.onclick = choisirCarte;
+
+            function choisirCarte(){
                 // if(!(element.mechanics.includes("Stealth"))){
                     // if(attaquer){
                         let formdata = new FormData();
@@ -486,7 +494,7 @@ const gameUpdate = data => {
                         refreshCarteAdv();
                     // }
                 // }
-            });
+            };
             boardA.prepend(newDiv);                
         });
         boardAdv = data.opponent.board.length;
@@ -499,6 +507,7 @@ function delCarteAdv(){
         while (boardA.hasChildNodes()) { //enlever tous les enfants
             boardA.removeChild(boardA.lastChild);
         }
+    boardA.remove();
 }
 
 function delCartePlay(){
@@ -506,6 +515,7 @@ function delCartePlay(){
     while (boardJ.hasChildNodes()) { //enlever tous les enfants
         boardJ.removeChild(boardJ.lastChild);
     }
+    boardJ.remove()
 }
 
 
