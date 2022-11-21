@@ -36,7 +36,7 @@
         public static function getCardCount() {
 
             $connection = Connection::getConnection();
-            $statement = $connection->prepare("SELECT * FROM cartes");
+            $statement = $connection->prepare("SELECT * FROM cartes ORDER BY nbrjouer DESC");
             $statement->setFetchMode(PDO::FETCH_ASSOC); // Permet de faire des selects et retourner les données en dictionnaire
             $statement->execute();
             $result = $statement->fetchall();

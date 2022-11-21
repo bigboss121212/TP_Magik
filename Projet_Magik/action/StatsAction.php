@@ -1,5 +1,6 @@
 <?php
     require_once("action/CommonAction.php");
+    require_once("action/DAO/CardDAO.php");
 
     class StatsAction extends CommonAction {
 
@@ -9,6 +10,7 @@
 
         protected function executeAction() {
             
-            return [];
+            $reponse = CardDAO::getCardCount(); 
+            return $reponse;
         }
     }
