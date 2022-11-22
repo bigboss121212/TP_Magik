@@ -8,34 +8,40 @@
 
 	$pageTitre = "Stats";
 	require_once("partial/header.php");
+	require_once("action/DAO/CardDAO.php");
 
 
 ?>		
+		<div id="background4"></div>
+		<div id="tableauStats">
+			<?php
+				if(!empty($data)){
+					$total = CardDAO::getTotalCount(); 
+					foreach ($data as $c){
+						if (isset($c["nbrjouer"])){
 
-
-		<?php
-			if(!empty($data)){
-				foreach ($data as $c){
-					if (isset($c["nbrjouer"])){
-
-						?>
-							<div class="carteStat">
-								<div class="idCarte">
-									<?= $c["id"] ?>
+							?>
+								<div class="carteStat">
+									<div class="imageCarte" style="background-image: url('./images/image_carte/<?= $c["id"]?>.png');"></div>
+									<div class="infoCarte" style="font-size: 20px;">
+										<?= "id: " . $c["id"] ?>
+									</div>
+									<div class="infoCarte" style="font-size: 20px;">
+										<?= "count: " . $c["nbrjouer"] ?>
+									</div>
+									<div class="infoCarte" style="font-size: 20px;">
+										<?= "ratio: " . round($c["nbrjouer"] / $total["sum"], 2) . "/" . $total["sum"]?>
+									</div>
 								</div>
-								<div class="countCarte">
-									<?= $c["nbrjouer"] ?>
-								</div>
-							</div>
 
-						<?php
+							<?php
 
+						}
 					}
 				}
-			}
-		?>
+			?>
 
-
+		</div>
 
 
 

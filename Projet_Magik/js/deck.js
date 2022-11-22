@@ -14,7 +14,8 @@ const applyStyles = iframe => {
 		height : "600px",
 		memberListFontColor : "#ff00dd",
 		memberListBackgroundColor : "white",
-        paddingTop: "200px"
+		paddingTop: "200px",
+		position : "absolute"
 	}
 	
 	setTimeout(() => {

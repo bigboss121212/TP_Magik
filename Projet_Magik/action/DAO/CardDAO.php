@@ -43,4 +43,15 @@
 
             return $result;
         }
+
+        public static function getTotalCount() {
+
+            $connection = Connection::getConnection();
+            $statement = $connection->prepare("SELECT SUM(nbrjouer) FROM cartes");
+            $statement->setFetchMode(PDO::FETCH_ASSOC); // Permet de faire des selects et retourner les données en dictionnaire
+            $statement->execute();
+            $result = $statement->fetch();
+
+            return $result;
+        }
     }
