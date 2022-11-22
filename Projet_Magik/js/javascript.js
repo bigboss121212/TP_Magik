@@ -6,7 +6,7 @@
 const applyStyles = iframe => {
 	let styles = {
 		fontColor : "#333",
-		backgroundColor : "rgba(87, 41, 5, 0.2)",
+		//backgroundColor : "rgba(0, 0, 0, 0.2)",
 		// fontGoogleName : "Sofia",
 		fontSize : "20px",
 		hideIcons : false, //(or true),
@@ -15,7 +15,8 @@ const applyStyles = iframe => {
 		height : "600px",
 		memberListFontColor : "#ff00dd",
 		memberListBackgroundColor : "white",
-        paddingTop: "300px"
+		opacity : "0.5",
+        paddingTop: "200px"
 	}
 	
 	setTimeout(() => {
