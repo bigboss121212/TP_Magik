@@ -32,8 +32,6 @@ const state = () => {
                 
                 text.innerHTML =("VOUS AVEZ PERDU!!"); 
             }
-
-            // window.location="loby.php";
         }
         if (typeof data !== "object") {
             if(data != null){
@@ -67,13 +65,14 @@ const gameUpdate = data => {
         let endPartie = document.getElementById("boutonB");
         let bchat = document.getElementById("boutonChat");
 
-        classH.innerHTML = data.heroClass + "\n";
-        classH.innerHTML += "\n";
-        classH.innerHTML += "my turn:" + data.yourTurn;
-        vie.innerHTML = "VIE: " + data.hp;
-        temps.innerHTML = "TEMPS: " + data.remainingTurnTime;
-        magie.innerHTML = "MP: " + data.mp;
-        nbCarte.innerHTML = "CARTES: " + data.remainingCardsCount;
+        classH.firstChild.innerHTML = data.heroClass + "\n";
+        classH.firstChild.innerHTML += "\n";
+        classH.firstChild.innerHTML += "my turn:" + data.yourTurn;
+        vie.firstChild.innerHTML = "VIE: " + data.hp;
+        temps.firstChild.innerHTML = "TEMPS: " + data.remainingTurnTime;
+        magie.firstChild.innerHTML = "MP: " + data.mp;
+        nbCarte.firstChild.innerHTML = "CARTES: " + data.remainingCardsCount;
+
         endturn.innerHTML = "END TURN";
         nbCarte.style.verticalAlign = "center";
 
@@ -184,6 +183,7 @@ const gameUpdate = data => {
                 let newP3 = document.createElement("p");
                 newP3.className = "infoCarte";
                 newP3.textContent = "mechanics: " + element.mechanics;
+                
 
                 newDiv.append(newP, newP1, newP2, newP3);
 

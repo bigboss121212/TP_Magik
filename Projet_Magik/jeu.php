@@ -30,27 +30,24 @@
 
 		<div id="jeuPlayer"></div>
 		
-	
 		<!-- retravailler les carte les creer avec le dom et les detruire-->
-		<div id="grid-container">
+		<div id="grid-container"></div>
 
-		</div>
-
-		<div id="classH"></div>
+		
 		
 		<div id="boutonChat">CHAT</div>
-		<iframe id="chatGame" style="width:700px;height:240px;z-index:1;position:absolute;top:20%;left:3%;opacity:0;" 
+		<iframe id="chatGame" style="width:400px;height:240px;z-index:1;position:absolute;bottom:12%;left:3%;opacity:0;" 
         src="https://magix.apps-de-cours.com/server/#/chat/<?=$_SESSION['key'] ?>">
 		</iframe>
 
-
+		<div id="temps"><p></p></div>
 		<div id ="erreur">UPDATE...</div>
 
 		<div id="infoPerso">
-			<div id="nbCarte"></div>
-			<div id="temps"></div>
-			<div id="vie"></div>
-			<div id="magie"></div>
+			<div id="nbCarte"><p></p></div>
+			<div id="classH"><p></p></div>
+			<div id="vie"><p></p></div>
+			<div id="magie"><p></p></div>
 		</div>
 
 		<div id="jeuPersonnel"></div>
