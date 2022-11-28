@@ -8,7 +8,8 @@
 	require_once("partial/header.php");
 
 ?>
-
+		
+		
 		<div id="jeuAdversaire">
 			<div id="carteAdv"></div>
 			<div id="infoAdv">
@@ -45,7 +46,9 @@
 
 		<div id="infoPerso">
 			<div id="nbCarte"><p></p></div>
-			<div id="classH"><p></p></div>
+			<div id="classH"><p>
+				<?= $_SESSION["username"]  ?></p>
+			</div>
 			<div id="vie"><p></p></div>
 			<div id="magie"><p></p></div>
 		</div>

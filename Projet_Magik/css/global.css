@@ -4,7 +4,8 @@
 }
 
 html * {
-    font-family: didot, sans-serif;
+    font-family: Anime Inept, sans-serif;
+    src: '../font/animeac2_reg.otf'
   }
 
 @font-face {
@@ -182,7 +183,7 @@ li{
 }
 
 #infoAN{
-    z-index: 1;
+    
     height: 90px;
     width: 90px;
     padding: 10px;
@@ -477,6 +478,7 @@ li{
     
 }
 
+
 .grid-item > p {
     font-size: 10px;
     text-align: left;
@@ -589,6 +591,17 @@ li{
 
 #back:hover {
     background-color:rgb(117, 117, 209); 
+}
+
+.feu {
+    z-index: 2;
+    height: 140px;
+    width: 100px;
+    background-image:url('../images/feu.png');
+    background-size:     cover;                    
+    background-repeat:   no-repeat;
+    background-position: center center; 
+    position: absolute;
 }
 
 

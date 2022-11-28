@@ -7,6 +7,7 @@ let attaquer = false;
 let carteActionUID = null;
 let chatAfficher = false;
 let finPartie = true;
+let spriteList = [];
 
 
 const state = () => {
@@ -54,6 +55,7 @@ const state = () => {
 window.addEventListener("load", () => {
 
 setTimeout(state, 1000); // Appel initial (attendre 1 seconde)
+tick();
 
 });
 
@@ -68,6 +70,8 @@ const gameUpdate = data => {
         let endturn = document.getElementById("boutonA");
         let endPartie = document.getElementById("boutonB");
         let bchat = document.getElementById("boutonChat");
+        //pour l'animation de feu attaque
+        let feu = document.getElementById("feu");
 
         // classH.firstChild.innerHTML = data.heroClass + "\n";
         // classH.firstChild.innerHTML += "\n";
@@ -207,6 +211,13 @@ const gameUpdate = data => {
                 else if(element.mechanics.includes("Charge")){
                     newDiv.style.boxShadow = "0 0 60px 30px #f00"
                 }
+                //pour afficher les carte que l'on peut jouer
+                if (element.cost > data.mp){
+                    newDiv.style.opacity = 0.5;
+                }
+                else{
+                    newDiv.style.opacity = 1;
+                }
                 //function pour jouer une carte lorsque c'est notre tour
                 newDiv.onclick = jouerCarte;
                 
@@ -270,28 +281,33 @@ const gameUpdate = data => {
         infoAN.onclick = attaquerAdv;
         
         function attaquerAdv(){ //faire verification si les cartes ADV on taunt
-            // if(attaquer){
-                let formdata = new FormData();
-                formdata.append("uidAdv", 0);
-                formdata.append("uidPlay", carteActionUID);
+          
+            let formdata = new FormData();
+            formdata.append("uidAdv", 0);
+            formdata.append("uidPlay", carteActionUID);
 
-                fetch("ajax-attaque.php", {
-                    method: "post",
-                    body: formdata
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (typeof data !== "object") {
-                        let update = document.getElementById("erreur");
-                        update.innerHTML = data;  
-                    }
-                    else{
-                        attaquer = false;
-                        carteActionUID = null;
-                    }
-                    console.log(data);
-                })  
-            // }
+            fetch("ajax-attaque.php", {
+                method: "post",
+                body: formdata
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (typeof data !== "object") {
+                    let update = document.getElementById("erreur");
+                    update.innerHTML = data;  
+                }
+                else{
+                    let position = infoAN.getBoundingClientRect();
+                    let x = position.left;
+                    let y = position.top;
+                    spriteList.push(new Feu(x,y))
+                    
+                    attaquer = false;
+                    carteActionUID = null;
+                }
+                console.log(data);
+            })  
+           
         };
        
         // console.log(data.opponent);
@@ -529,6 +545,46 @@ function delCartePlay(){
         boardJ.removeChild(boardJ.lastChild);
     }
     boardJ.remove()
+}
+
+class Feu {
+    constructor(x, y){
+        this.x = x;
+        this.y = y;
+        this.opacity = 1;
+        this.newDiv = document.createElement("div");
+        this.newDiv.className = "feu";
+        this.newDiv.style.left = this.x +'px';
+        this.newDiv.style.top = this.y +'px';
+        document.body.appendChild(this.newDiv);
+    }
+
+    tick(){
+        let alive = true;
+        if (this.opacity > 0){
+            this.opacity -= 0.1;
+        }
+        else if(this.opacity <= 0){
+            alive = false;
+        }
+        this.newDiv.style.opacity = this.opacity - 0.1;
+        return alive;
+
+    }
+}
+
+const tick = () =>{
+    for(let i = 0; i < spriteList.length; i++){
+        const sprit = spriteList[i];
+        let alive = sprit.tick();
+
+        if(!alive){
+            spriteList.splice(i, 1);
+            i--;
+        }
+    }
+
+    window.requestAnimationFrame(tick);
 }
 
 

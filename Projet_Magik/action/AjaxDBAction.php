@@ -12,5 +12,9 @@
             
             CardDAO::delDataBase();
 
+            $result3 = "fresh_db";
+
+            return compact("result3");
+
         }
     }
