@@ -7,6 +7,11 @@ html * {
     font-family: didot, sans-serif;
   }
 
+@font-face {
+    font-family: didot, sans-serif;
+    src:"yo";
+  }
+
 body {
     text-align: center;
 }
@@ -595,10 +600,27 @@ li{
     margin : 10px;
     font-size: 30px;
     text-align: center;
-    height: 180px;
-    width: 130px;
+    height: 190px;
+    width: 140px;
     z-index: 1;
     border-radius: 15%;
+    background-image:url('../images/oldBasic.png');
+    background-size:     cover;                    
+    background-repeat:   no-repeat;
+    background-position: center center; 
+}
+
+
+#clear {
+    position: absolute;
+    top:10%;
+    left: 5%;
+    padding: 5px;
+    width: 100px;
+    background-color: #df8927;
+    color: white;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    border: 1px solid rgba(0, 0, 0, 0.8);
 }
 
 

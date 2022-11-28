@@ -29,6 +29,13 @@
             }
         ?>
         <?php
+            if($pageTitre == "Stats"){
+                ?>
+                    <script src="js/stats.js"></script>
+                <?php
+            }
+        ?>
+        <?php
             if($pageTitre == "Training" || $pageTitre == "PVP" ){
                 ?>
                     <script src="js/jeu.js"></script>
@@ -43,7 +50,7 @@
                 if($data["isConnected"] > 0){
                 ?>
                     <div id="menu">
-                        <p><?= "BIENVENU " . $_SESSION["username"]  ?></p>
+                        <p><?= "BIENVENUE " . $_SESSION["username"]  ?></p>
                         <ul>
                             <li><a href="loby.php">Loby</a></li>
                             <li><a href="pageDeck.php">PageDeck</a></li>

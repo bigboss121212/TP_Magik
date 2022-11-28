@@ -13,6 +13,9 @@
 
 ?>		
 		<div id="background4"></div>
+
+		<div id="clear">CLEAR DB</div>
+
 		<div id="tableauStats">
 			<?php
 				if(!empty($data)){
