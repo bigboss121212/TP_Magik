@@ -12,9 +12,9 @@
 		<div id="jeuAdversaire">
 			<div id="carteAdv"></div>
 			<div id="infoAdv">
+				<p id="infoACa"></p>
 				<p id="infoAN"></p>
 				<p id="infoAHp"></p>
-				<p id="infoACa"></p>
 				<p id="infoAMp"></p>
 			</div>
 		</div>

@@ -3,6 +3,10 @@
     padding:0;
 }
 
+html * {
+    font-family: didot, sans-serif;
+  }
+
 body {
     text-align: center;
 }
@@ -162,9 +166,8 @@ li{
 
 #infoAdv{
     display: grid;
-    grid-template-columns: auto auto auto auto auto;
+    grid-template-columns: auto auto auto auto auto 30%;
     grid-template-rows: auto;
-    
     z-index: 1;
     height: 100px;
     width: 50%;
@@ -175,18 +178,21 @@ li{
 
 #infoAN{
     z-index: 1;
-    height: 50px;
-    width: 50px;
+    height: 90px;
+    width: 90px;
     padding: 10px;
     margin : 10px;
-    font-size: 15px;
+    font-size: 30px;
     text-align: center;
     background-image:url('../images/ball.png');
     background-size:     cover;                    
     background-repeat:   no-repeat;
     background-position: center center;
     color: white;
+
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    top: -20px;
+    position: relative;
 
 }
 
@@ -194,10 +200,10 @@ li{
     
     z-index: 1;
     height: 50px;
-    width: 50px;
+    width: 60px;
     padding: 10px;
     margin : 10px;
-    font-size: 15px;
+    font-size: 40px;
     text-align: center;
     background-image:url('../images/coeur.png');
     background-size:     cover;                    
@@ -209,20 +215,19 @@ li{
 }
 
 #infoACa{
-    
     z-index: 1;
-    height: 50px;
-    width: 50px;
+    height: 70px;
+    width: 40px;
     padding: 10px;
-    margin : 10px;
-    font-size: 15px;
+    /* margin : 10px; */
     text-align: center;
-    background-image:url('../images/card.png');
+    background-image:url('../images/dosCarte.jpg');
     background-size:     cover;                    
     background-repeat:   no-repeat;
     background-position: center center;
     color: white;
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    font-size: 40px;
 
 }
 
@@ -233,7 +238,7 @@ li{
     width: 50px;
     padding: 10px;
     margin : 10px;
-    font-size: 15px;
+    font-size: 40px;
     text-align: center;
     background-image:url('../images/mana.png');
     background-size:     cover;                    
@@ -243,7 +248,6 @@ li{
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 
 }
-
 
 #background_3{
     margin: auto;
@@ -334,9 +338,9 @@ li{
 
 #nbCarte{
     height: 100px;
-    width: 100px;
+    width: 70px;
     z-index: 1;
-    background-image:url('../images/card.png');
+    background-image:url('../images/dosCarte.jpg');
     background-size:     cover;                    
     background-repeat:   no-repeat;
     background-position: center center;
@@ -347,15 +351,16 @@ li{
 }
 
 #nbCarte > p{
-    top: 50%;
+    top: 10%;
     width: 100%;
     text-align:center;
     position: relative;
+    font-size: 60px;
 }
 
 #vie{
     height: 100px;
-    width: 100px;
+    width: 120px;
     z-index: 1;
     background-image:url('../images/coeur.png');
     background-size:     cover;                    
@@ -367,10 +372,11 @@ li{
 }
 
 #vie > p{
-    top: 50%;
+    top: 10%;
     width: 100%;
     text-align:center;
     position: relative;
+    font-size: 60px;
 }
 
 #temps{
@@ -390,10 +396,11 @@ li{
 }
 
 #temps > p{
-    top: 50%;
+    top: 10%;
     width: 100%;
     text-align:center;
     position: relative;
+    font-size: 60px;
 }
 
 #magie{
@@ -410,10 +417,11 @@ li{
 }
 
 #magie > p{
-    top: 50%;
+    top: 10%;
     width: 100%;
     text-align:center;
     position: relative;
+    font-size: 60px;
 }
 
 #classH{
@@ -422,26 +430,26 @@ li{
     background-size:     cover;                    
     background-repeat:   no-repeat;
     background-position: center center;
-    height: 100px;
+    height: 120px;
     width: 120px;
     margin: 10px;
     color: white;
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
-#classH > p{
+/* #classH > p{
     top: 50%;
     width: 100%;
     text-align:center;
     position: relative;
-}
+} */
 
 #grid-container {
     display: grid;
     grid-template-columns: auto auto auto auto auto auto auto auto;
     padding: 10px;
     position: absolute;
-    bottom: 10%; 
+    bottom: 15%; 
     left: 50%;
     transform: translate(-50%);
 }
@@ -476,40 +484,28 @@ li{
     grid-template-rows: auto auto;
     z-index: 1;
     position: absolute;
-    bottom: 0px; 
-    height: 400px;
-    width: 200px;
+    bottom: 5%; 
     right: 0px;
     margin-right: 50px;
 }
 
 #boutonA{
-    height: 33%;
-    width: 33%;
-    
-    bottom: 33%;
-    left: 50%;
-    transform: translate(-50%);
-    padding: 35px 60px 0 60px;
-    background-image:url('../images/fleche.png');
+    height: 100px;
+    width: 100px;
+    margin: 10px;
+    background-image:url('../images/endTurn.png');
     background-size:     cover;                    
     background-repeat:   no-repeat;
     background-position: center center; 
     color: white;
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-
 }
 
 #boutonB{
-    height: 36%;
-    width: 33%;
-    
-    bottom: 33%;
-    left: 50%;
-    transform: translate(-50%);
-    padding: 35px 60px 0 60px;
-    margin-right: 20px;
-    background-image:url('../images/fleche.png');
+    height: 100px;
+    width: 100px;
+    margin: 10px;
+    background-image:url('../images/surrender.png');
     background-size:     cover;                    
     background-repeat:   no-repeat;
     background-position: center center; 
@@ -519,19 +515,17 @@ li{
 }
 
 #boutonA > p{
-    height: fit-content;
+    top: 45%;
+    width: 100%;
     text-align:center; 
-    vertical-align: middle;
-    display: table-cell;
+    position: relative;
 }
 
 #boutonB > p{
-    padding-top: 10px;
-    margin-right: 30px;
-    height: fit-content;
+    top: 45%;
+    width: 100%;
     text-align:center; 
-    vertical-align: middle;
-    display: table-cell;
+    position: relative;
 }
 
 #boutonChat{

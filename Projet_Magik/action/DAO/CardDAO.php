@@ -54,4 +54,13 @@
 
             return $result;
         }
+
+        public static function delDataBase(){
+
+            $connection = Connection::getConnection();
+            $statement = $connection->prepare("TRUNCATE TABLE cartes");
+            $statement->setFetchMode(PDO::FETCH_ASSOC); // Permet de faire des selects et retourner les données en dictionnaire
+            $statement->execute();
+            
+        }
     }

@@ -6,7 +6,7 @@ let dataG = null
 let attaquer = false;
 let carteActionUID = null;
 let chatAfficher = false;
-
+let finPartie = true;
 
 
 const state = () => {
@@ -17,21 +17,25 @@ const state = () => {
     .then(data => {
         
         if(data == "LAST_GAME_WON" || data == "LAST_GAME_LOST"){
+            if (finPartie){
+                delCarteAdv();
+                delCartePlay();
+                let partieTerm = document.getElementById("partieTermine");
+                let text = document.getElementById("text");
+                partieTerm.style.display = "block";
+                partieTerm.style.fontSize = "x-large";
 
-            delCarteAdv();
-            delCartePlay();
-            let partieTerm = document.getElementById("partieTermine");
-            let text = document.getElementById("text");
-            partieTerm.style.display = "block";
-            partieTerm.style.fontSize = "x-large";
+                if(data == "LAST_GAME_WON"){
+                    text.innerHTML = "VOUS AVEZ GAGNE!"
+                }
+                else if(data == "LAST_GAME_LOST"){
+                    
+                    text.innerHTML =("VOUS AVEZ PERDU!!"); 
+                } 
+                finPartie = false;
 
-            if(data == "LAST_GAME_WON"){
-                text.innerHTML = "VOUS AVEZ GAGNE!"
             }
-            else if(data == "LAST_GAME_LOST"){
-                
-                text.innerHTML =("VOUS AVEZ PERDU!!"); 
-            }
+
         }
         if (typeof data !== "object") {
             if(data != null){
@@ -65,15 +69,22 @@ const gameUpdate = data => {
         let endPartie = document.getElementById("boutonB");
         let bchat = document.getElementById("boutonChat");
 
-        classH.firstChild.innerHTML = data.heroClass + "\n";
-        classH.firstChild.innerHTML += "\n";
-        classH.firstChild.innerHTML += "my turn:" + data.yourTurn;
-        vie.firstChild.innerHTML = "VIE: " + data.hp;
-        temps.firstChild.innerHTML = "TEMPS: " + data.remainingTurnTime;
-        magie.firstChild.innerHTML = "MP: " + data.mp;
-        nbCarte.firstChild.innerHTML = "CARTES: " + data.remainingCardsCount;
+        // classH.firstChild.innerHTML = data.heroClass + "\n";
+        // classH.firstChild.innerHTML += "\n";
+        // classH.firstChild.innerHTML += "my turn:" + data.yourTurn;
+        if(data.yourTurn == true){
+            classH.style.backgroundImage = "url('./images/goku_turn.png')";
+        }
+        else{
+            classH.style.backgroundImage = "url('./images/goku.png')";
+        }
+        
+        vie.firstChild.innerHTML = data.hp;
+        temps.firstChild.innerHTML = data.remainingTurnTime;
+        magie.firstChild.innerHTML = data.mp;
+        nbCarte.firstChild.innerHTML = data.remainingCardsCount;
 
-        endturn.innerHTML = "END TURN";
+        // endturn.innerHTML = "END TURN";
         nbCarte.style.verticalAlign = "center";
 
         //pour le hero power
@@ -250,10 +261,10 @@ const gameUpdate = data => {
         let infoAMp = document.getElementById("infoAMp");
 
         
-        infoAN.textContent = "Name: " + data.opponent.username;
-        infoAHp.textContent = "Hp: " + data.opponent.hp;
-        infoACa.textContent = "Remaining Card: " + data.opponent.remainingCardsCount;
-        infoAMp.textContent = "Mp: " + data.opponent.mp;
+        infoAN.textContent = data.opponent.username;
+        infoAHp.textContent = data.opponent.hp;
+        infoACa.textContent = data.opponent.remainingCardsCount;
+        infoAMp.textContent = data.opponent.mp;
 
 
         infoAN.onclick = attaquerAdv;
@@ -504,9 +515,11 @@ const gameUpdate = data => {
 
 function delCarteAdv(){
     let boardA = document.getElementById("jeuAdv");
+    if (boardA != null){
         while (boardA.hasChildNodes()) { //enlever tous les enfants
             boardA.removeChild(boardA.lastChild);
         }
+    }
     boardA.remove();
 }
 
