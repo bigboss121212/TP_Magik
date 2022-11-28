@@ -300,7 +300,7 @@ const gameUpdate = data => {
                     let position = infoAN.getBoundingClientRect();
                     let x = position.left;
                     let y = position.top;
-                    spriteList.push(new Feu(x,y))
+                    spriteList.push(new Feu(x,y -10))
                     
                     attaquer = false;
                     carteActionUID = null;
@@ -562,12 +562,12 @@ class Feu {
     tick(){
         let alive = true;
         if (this.opacity > 0){
-            this.opacity -= 0.1;
+            this.opacity -= 0.01;
         }
         else if(this.opacity <= 0){
             alive = false;
         }
-        this.newDiv.style.opacity = this.opacity - 0.1;
+        this.newDiv.style.opacity = this.opacity - 0.01;
         return alive;
 
     }
