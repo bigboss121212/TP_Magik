@@ -40,8 +40,9 @@ const state = () => {
         }
         if (typeof data !== "object") {
             if(data != null){
-                let update = document.getElementById("erreur");
-                update.innerHTML = data;  
+                // let update = document.getElementById("erreur");
+                // update.innerHTML = data;  
+                spriteList.push(new Shenron(data)); 
             }  
         }
         console.log(data); // contient les cartes/état du jeu.
@@ -100,8 +101,9 @@ const gameUpdate = data => {
             .then(data => {
                 if (typeof data !== "object") {
                     if(data != null){
-                        let update = document.getElementById("erreur");
-                        update.innerHTML = data;  
+                        // let update = document.getElementById("erreur");
+                        // update.innerHTML = data;  
+                        spriteList.push(new Shenron(data)); 
                     }  
                 }
                 console.log(data);
@@ -117,8 +119,9 @@ const gameUpdate = data => {
             .then(data => {
                 if (typeof data !== "object") {
                     if(data != null){
-                        let update = document.getElementById("erreur");
-                        update.innerHTML = data;  
+                        // let update = document.getElementById("erreur");
+                        // update.innerHTML = data; 
+                        spriteList.push(new Shenron(data));  
                     }  
                 }
                 console.log(data);
@@ -232,8 +235,9 @@ const gameUpdate = data => {
                     .then(data => {
                         if (typeof data !== "object") {
                             if(data != null){
-                                let update = document.getElementById("erreur");
-                                update.innerHTML = data;  
+                                // let update = document.getElementById("erreur");
+                                // update.innerHTML = data; 
+                                spriteList.push(new Shenron(data));  
                             }
                         }
                         else{
@@ -293,14 +297,15 @@ const gameUpdate = data => {
             .then(response => response.json())
             .then(data => {
                 if (typeof data !== "object") {
-                    let update = document.getElementById("erreur");
-                    update.innerHTML = data;  
+                    // let update = document.getElementById("erreur");
+                    // update.innerHTML = data; 
+                    spriteList.push(new Shenron(data)); 
                 }
                 else{
                     let position = infoAN.getBoundingClientRect();
                     let x = position.left;
                     let y = position.top;
-                    spriteList.push(new Feu(x,y -10))
+                    spriteList.push(new Feu(x -5,y -10))
                     
                     attaquer = false;
                     carteActionUID = null;
@@ -508,8 +513,9 @@ const gameUpdate = data => {
                         .then(data => {
                             if (typeof data !== "object") {
                                 if(data != null){
-                                    let update = document.getElementById("erreur");
-                                    update.innerHTML = data;  
+                                    // let update = document.getElementById("erreur");
+                                    // update.innerHTML = data;  
+                                    spriteList.push(new Shenron(data)); 
                                 }  
                             }
                             else{
@@ -556,6 +562,7 @@ class Feu {
         this.newDiv.className = "feu";
         this.newDiv.style.left = this.x +'px';
         this.newDiv.style.top = this.y +'px';
+        this.spriteList = [];
         document.body.appendChild(this.newDiv);
     }
 
@@ -564,6 +571,9 @@ class Feu {
         if (this.opacity > 0){
             this.opacity -= 0.01;
         }
+        // if(this.opacity == 0.01 ){
+            
+        // }
         else if(this.opacity <= 0){
             alive = false;
         }
@@ -579,12 +589,50 @@ const tick = () =>{
         let alive = sprit.tick();
 
         if(!alive){
+            sprit.newDiv.remove();
             spriteList.splice(i, 1);
             i--;
         }
     }
 
     window.requestAnimationFrame(tick);
+}
+
+class Shenron{
+    constructor(data){
+        this.newDiv = document.createElement("div");
+        this.newDiv.className = "shenron";
+        this.newDiv2 = document.createElement("div");
+        this.newDiv2.className = "erreur";
+        this.p = document.createElement("p");
+        this.p.innerHTML = data;
+        this.newDiv2.appendChild(this.p);
+        this.opacity = 1;
+        this.opacity2 = 1;
+        document.body.appendChild(this.newDiv);
+        document.body.appendChild(this.newDiv2);
+    }
+
+    tick(){
+        let alive = true;
+        if (this.opacity > 0){
+            this.opacity -= 0.01;
+        }
+        else if(this.newDiv.style.opacity <= 0){
+            this.newDiv2.remove();
+            alive = false;
+        }
+        this.newDiv2.style.opacity = this.opacity - 0.02;
+
+        if(this.newDiv2.style.opacity <= 0){
+            if (this.opacity2 > 0){
+                this.opacity2 -= 0.01;
+            }
+            this.newDiv.style.opacity = this.opacity2 - 0.01;
+        }
+        return alive;
+
+    }
 }
 
 

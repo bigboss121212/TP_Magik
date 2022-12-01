@@ -14,7 +14,7 @@
 ?>		
 		<div id="background4"></div>
 
-		<div id="clear">CLEAR DB</div>
+		<button type="button" id="clear">CLEAR DB</button>
 
 		<div id="tableauStats">
 			<?php

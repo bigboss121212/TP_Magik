@@ -42,7 +42,7 @@
 		</iframe>
 
 		<div id="temps"><p></p></div>
-		<div id ="erreur">UPDATE...</div>
+		<!-- <div class="erreur">UPDATE...</div> -->
 
 		<div id="infoPerso">
 			<div id="nbCarte"><p></p></div>

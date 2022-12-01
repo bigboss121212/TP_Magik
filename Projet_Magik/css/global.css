@@ -3,15 +3,18 @@
     padding:0;
 }
 
-html * {
-    font-family: Anime Inept, sans-serif;
-    src: '../font/animeac2_reg.otf'
-  }
+
 
 @font-face {
-    font-family: didot, sans-serif;
-    src:"yo";
+    font-family: Anime Inept;
+    src:'../font/Anime Inept.otf' format('otf');
+
   }
+
+html * {
+    font-family: Anime Inept;
+    src:'../font/Anime Inept.otf' format('otf');
+  }  
 
 body {
     text-align: center;
@@ -131,6 +134,18 @@ li{
     position:absolute;
 }
 
+#background_deck {
+    margin: auto;
+    position:absolute;
+    background-image:url('../images/deck.jpg');
+    width:100%;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-top:10%
+}
+
 /* pour le jeu */
 
 #jeuAdversaire{
@@ -188,7 +203,7 @@ li{
     width: 90px;
     padding: 10px;
     margin : 10px;
-    font-size: 30px;
+    /* font-size: 30px; */
     text-align: center;
     background-image:url('../images/ball.png');
     background-size:     cover;                    
@@ -294,7 +309,7 @@ li{
 }
 
 .carteABoard > p{
-    margin: 5px 10px 0 10px;
+    margin: 5px 10px 0 15px;
 }
 
 .imageCarte{
@@ -551,29 +566,52 @@ li{
 
 }
 
-#erreur{
-    z-index: 1;
+.erreur{
+    z-index: 2;
     position: absolute;
-    background-color: rgb(11, 121, 30);
-    height: 30px;
-    width: 250px;
-    bottom: 3%;
-    left: 3%;
-    border: 2px solid rgba(0, 0, 0, 0.8);
+    height: 220px;
+    width: 260px;
+    bottom: 30%;
+    left: 15%;
+    
     text-align:center; 
     vertical-align: middle;
     display: table-cell;
     padding-top: 10px;
     color: white;
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    background-image:url('../images/dialogue.png');
+    background-size:     cover;                    
+    background-repeat:   no-repeat;
+    background-position: center center; 
+    position: absolute;
+}
 
+.erreur > p{
+    top: 40%;
+    width: 100%;
+    text-align:center;
+    position: relative;
+}
+
+.shenron{
+    z-index: 2;
+    height: 550px;
+    width: 400px;
+    background-image:url('../images/shenron.png');
+    background-size:     cover;                    
+    background-repeat:   no-repeat;
+    background-position: center center; 
+    position: absolute; 
+    bottom: 5%;
+    left: 3%;
 }
 
 #partieTermine{
     z-index: 1;
     position: absolute;
     padding: 100px;
-    background-color: rgb(233, 145, 145);
+    background-color: rgb(43, 34, 177);
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
@@ -586,7 +624,7 @@ li{
 #back{
     padding: 20px;
     margin: 20px;
-    background-color: #dfdc27;
+    background-color: #c7c69c;
 }
 
 #back:hover {
@@ -596,7 +634,7 @@ li{
 .feu {
     z-index: 2;
     height: 140px;
-    width: 100px;
+    width: 120px;
     background-image:url('../images/feu.png');
     background-size:     cover;                    
     background-repeat:   no-repeat;
