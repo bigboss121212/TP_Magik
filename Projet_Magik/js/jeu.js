@@ -1,13 +1,13 @@
-let sizeAdv = 0;
-let boardAdv = 0;
 let boardPl = 0;
 let sizePlay = 0;
-let dataG = null
+// let dataG = null
 let attaquer = false;
 let carteActionUID = null;
 let chatAfficher = false;
 let finPartie = true;
 let spriteList = [];
+let myLife = 35;
+let dict = {};
 
 
 const state = () => {
@@ -46,7 +46,7 @@ const state = () => {
             }  
         }
         console.log(data); // contient les cartes/état du jeu.
-        dataG = data;
+        // dataG = data;
         gameUpdate(data);
         
         setTimeout(state, 1000); // Attendre 1 seconde avant de relancer l’appel
@@ -71,9 +71,43 @@ const gameUpdate = data => {
         let endturn = document.getElementById("boutonA");
         let endPartie = document.getElementById("boutonB");
         let bchat = document.getElementById("boutonChat");
-        //pour l'animation de feu attaque
-        let feu = document.getElementById("feu");
+        
+        //pour l'animation de feu si le joueur se fait attaquer
+        if(data.hp < myLife){
+            let position = classH.getBoundingClientRect();
+            let x = position.left;
+            let y = position.top;
+            spriteList.push(new Feu(x,y -15))
+        }
+        myLife = data.hp;
 
+        if(data.yourTurn == true){
+            data.hand.forEach(element => {
+                dict[element.id] = element.hp;
+            })
+            boardPl = data.board.length;
+        }
+        if(data.yourTurn == false){
+            if(data.board.length < boardPl){
+                let x = window.innerWidth * 0.5 - (window.innerWidth * 0.02);
+                let y = window.innerHeight * 0.5 - (window.innerHeight * 0.12) ; 
+                window.innerWidth;
+                console.log(x);
+                spriteList.push(new Feu(x, y));
+            }
+            else{
+                data.hand.forEach(element => {
+                    if(dict[element.id] != element.hp){
+                        let x = window.innerWidth * 0.5 - (window.innerWidth * 0.02);
+                        let y = window.innerHeight * 0.5 - (window.innerHeight * 0.12) ; 
+                        window.innerWidth;
+                        console.log(x);
+                        spriteList.push(new Feu(x, y));
+                    }
+                })
+            }
+
+        }
         // classH.firstChild.innerHTML = data.heroClass + "\n";
         // classH.firstChild.innerHTML += "\n";
         // classH.firstChild.innerHTML += "my turn:" + data.yourTurn;
@@ -253,8 +287,6 @@ const gameUpdate = data => {
                              })
                              .then(response => response.json())
                              .then(data => {
-                    
-                                 console.log("hello");
                                  console.log(data);
                              })
                             refreshCartePlay();
@@ -305,7 +337,7 @@ const gameUpdate = data => {
                     let position = infoAN.getBoundingClientRect();
                     let x = position.left;
                     let y = position.top;
-                    spriteList.push(new Feu(x -5,y -10))
+                    spriteList.push(new Feu(x, y -15))
                     
                     attaquer = false;
                     carteActionUID = null;
@@ -317,21 +349,21 @@ const gameUpdate = data => {
        
         // console.log(data.opponent);
 
-        if(data.opponent.handSize != sizeAdv){
+        // if(data.opponent.handSize != sizeAdv){
 
-            let mainAdv = document.getElementById("carteAdv");
-            while (mainAdv.hasChildNodes()) { //enlever tous les enfants
-                mainAdv.removeChild(mainAdv.lastChild);
-            }
-
-            for(let i = 0; i < data.opponent.handSize; i++){
-                
-                let newDiv = document.createElement("div");
-                newDiv.className = "carteA";
-                mainAdv.prepend(newDiv);
-            }
+        let mainAdv = document.getElementById("carteAdv");
+        while (mainAdv.hasChildNodes()) { //enlever tous les enfants
+            mainAdv.removeChild(mainAdv.lastChild);
         }
-        sizeAdv = data.opponent.handSize;
+
+        for(let i = 0; i < data.opponent.handSize; i++){
+            
+            let newDiv = document.createElement("div");
+            newDiv.className = "carteA";
+            mainAdv.prepend(newDiv);
+        }
+        // }
+        // sizeAdv = data.opponent.handSize;
 
         //pour l'affichage du board de l'adversaire
         //if(data.opponent.board.length != boardAdv){
@@ -429,7 +461,7 @@ const gameUpdate = data => {
             boardJ.prepend(newDiv);                
         });
 
-        boardPl = data.opponent.board.length;
+        // boardPl = data.opponent.board.length;
     }
 
     function refreshCarteAdv() {
@@ -442,8 +474,8 @@ const gameUpdate = data => {
 
         data.opponent.board.forEach(element => {
 
-            let newDiv = document.createElement("div");
-            newDiv.className = "carteABoard";
+            let newDivAB = document.createElement("div");
+            newDivAB.className = "carteABoard";
 
             let newImage = document.createElement("div");
             newImage.className = "imageCarte";
@@ -452,7 +484,7 @@ const gameUpdate = data => {
             newImage.style.backgroundPosition = "center center";
             newImage.style.backgroundImage = "url('./images/image_carte/" + element.id + ".png')";
             
-            newDiv.appendChild(newImage);
+            newDivAB.appendChild(newImage);
 
             let newP = document.createElement("p");
             newP.className = "infoCarte";
@@ -476,28 +508,28 @@ const gameUpdate = data => {
             newP3.className = "infoCarte";
             newP3.textContent = "mechanics: " + element.mechanics;
     
-            newDiv.append(newP, newP2, newP3);
+            newDivAB.append(newP, newP2, newP3);
 
             if(element.state == "IDLE"){
-                newDiv.style.opacity = 1;
+                newDivAB.style.opacity = 1;
             }
             else if(element.state == "SLEEP"){
-                newDiv.style.opacity = 0.5;
+                newDivAB.style.opacity = 0.5;
             }
 
             if(element.mechanics.includes("Taunt")){
-                newDiv.style.boxShadow = "0 0 60px 30px #fcffa4"
+                newDivAB.style.boxShadow = "0 0 60px 30px #fcffa4"
             }
             else if(element.mechanics.includes("Stealth")){
-                newDiv.style.boxShadow = "0 0 60px 30px #1385ee"
+                newDivAB.style.boxShadow = "0 0 60px 30px #1385ee"
             }
             else if(element.mechanics.includes("Charge")){
-                newDiv.style.boxShadow = "0 0 60px 30px #f00"
+                newDivAB.style.boxShadow = "0 0 60px 30px #f00"
             }
 
             //selectionner une carte pour faire une action
-            newDiv.onclick = choisirCarte;
-
+            boardA.prepend(newDivAB); 
+            newDivAB.onclick = choisirCarte;
             function choisirCarte(){
                 // if(!(element.mechanics.includes("Stealth"))){
                     // if(attaquer){
@@ -519,6 +551,11 @@ const gameUpdate = data => {
                                 }  
                             }
                             else{
+                                let x = window.innerWidth * 0.5 - (window.innerWidth * 0.02);
+                                let y = window.innerHeight * 0.5 - (window.innerHeight * 0.12) ; 
+                                window.innerWidth
+                                console.log(x)
+                                spriteList.push(new Feu(x, y))
                                 attaquer = false;
                                 carteActionUID = null;
                             }
@@ -528,9 +565,9 @@ const gameUpdate = data => {
                     // }
                 // }
             };
-            boardA.prepend(newDiv);                
+                           
         });
-        boardAdv = data.opponent.board.length;
+        // boardAdv = data.opponent.board.length;
     }
 
 }
@@ -569,19 +606,98 @@ class Feu {
     tick(){
         let alive = true;
         if (this.opacity > 0){
+            this.opacity -= 0.02;
+        }
+        if(this.opacity == 0.98 ){
+            this.spriteList.push(new FeuEtendu(this.x, this.y - 25, 80, 70));
+            this.spriteList.push(new FeuEtendu(this.x + 50, this.y, 80, 70));
+            this.spriteList.push(new FeuEtendu(this.x + 50, this.y + 50, 80, 70));
+            this.spriteList.push(new FeuEtendu(this.x, this.y + 75, 80, 70));
+            this.spriteList.push(new FeuEtendu(this.x -50, this.y +50, 80, 70));
+            this.spriteList.push(new FeuEtendu(this.x -50, this.y, 80, 70));
+           
+        }
+        if (this.opacity == 0.96) {
+            this.spriteList.push(new FeuEtendu(this.x, this.y - 50, 50, 40));
+            this.spriteList.push(new FeuEtendu(this.x + 100, this.y, 50, 40));
+            this.spriteList.push(new FeuEtendu(this.x + 100, this.y + 100, 50, 40));
+            this.spriteList.push(new FeuEtendu(this.x, this.y + 150, 50, 40));
+            this.spriteList.push(new FeuEtendu(this.x -100, this.y +100, 50, 40));
+            this.spriteList.push(new FeuEtendu(this.x -100, this.y, 50, 40));
+            
+        }
+        if(this.opacity == 0.94){
+            this.spriteList.push(new FeuEtendu(this.x, this.y - 75, 50, 40));
+            this.spriteList.push(new FeuEtendu(this.x + 150, this.y, 50, 40));
+            this.spriteList.push(new FeuEtendu(this.x + 150, this.y + 150, 50, 40));
+            this.spriteList.push(new FeuEtendu(this.x, this.y + 225, 50, 40));
+            this.spriteList.push(new FeuEtendu(this.x -150, this.y +150, 50, 40));
+            this.spriteList.push(new FeuEtendu(this.x -150, this.y, 50, 40));
+        }
+
+        else if(this.opacity <= 0){
+            if(this.spriteList.length == 0){
+                alive = false;
+            }
+           
+        }
+
+        for(let i = 0; i < this.spriteList.length; i++){
+            const sprit = this.spriteList[i];
+            let alive = sprit.tick();
+    
+            if(!alive){
+                sprit.newDiv.remove();
+                this.spriteList.splice(i, 1);
+                i--;
+            }
+        }
+
+        this.newDiv.style.opacity = this.opacity - 0.02;
+        return alive;
+
+    }
+}
+
+class FeuEtendu{
+    constructor(x,y, height, widht){
+        this.x = x;
+        this.y = y;
+        this.height = height;
+        this.widht = widht;
+        this.opacity = 1;
+        this.newDiv = document.createElement("div");
+        this.newDiv.className = "feu";
+        this.newDiv.style.left = this.x +'px';
+        this.newDiv.style.top = this.y +'px';
+        this.newDiv.style.height = this.height  +'px';
+        this.newDiv.style.widht = this.widht  +'px';
+        
+
+        if(this.y < window.innerHeight - 100){
+            
+           document.body.appendChild(this.newDiv); 
+        }
+        
+    }
+    
+    tick(){
+        let alive = true;
+        if (this.opacity > 0){
             this.opacity -= 0.01;
         }
-        // if(this.opacity == 0.01 ){
-            
-        // }
         else if(this.opacity <= 0){
+            this.newDiv.remove();
             alive = false;
         }
+
         this.newDiv.style.opacity = this.opacity - 0.01;
         return alive;
 
     }
 }
+
+
 
 const tick = () =>{
     for(let i = 0; i < spriteList.length; i++){

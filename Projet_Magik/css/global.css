@@ -610,7 +610,7 @@ li{
 #partieTermine{
     z-index: 1;
     position: absolute;
-    padding: 100px;
+    padding: 50px;
     background-color: rgb(43, 34, 177);
     top: 50%;
     left: 50%;
@@ -618,6 +618,7 @@ li{
     border: 2px solid rgba(0, 0, 0, 0.8);
     color: white;
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    opacity: 0.8;
 
 }
 
@@ -625,6 +626,7 @@ li{
     padding: 20px;
     margin: 20px;
     background-color: #c7c69c;
+    opacity: 1;
 }
 
 #back:hover {
@@ -640,6 +642,7 @@ li{
     background-repeat:   no-repeat;
     background-position: center center; 
     position: absolute;
+    background-size: contain;
 }
 
 
