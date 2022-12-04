@@ -39,6 +39,8 @@
             if($pageTitre == "Training" || $pageTitre == "PVP" ){
                 ?>
                     <script src="js/jeu.js"></script>
+                    <script src="js/shenron.js"></script>
+                    <script src="js/feu.js"></script>
                 <?php
             }
         ?>

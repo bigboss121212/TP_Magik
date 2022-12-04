@@ -56,7 +56,6 @@
 					<div id="vie"><p></p></div>
 				</div>
 			</div>
-			
 			<div id="magie"><p></p></div>
 		</div>
 

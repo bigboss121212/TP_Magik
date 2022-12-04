@@ -33,9 +33,16 @@
                 }
 
                 header("location:loby.php");
-                exit;
-                    
+                exit;      
             }
+            // else if(empty($_POST["champCourriel"])){
+            //     $hasConnectionError = true;
+            //     return compact("hasConnectionError");
+            // }
+            // else if(empty($_POST["champMotDePasse"])){
+            //     $hasConnectionError = true;
+            //     return compact("hasConnectionError");
+            // }
             
             
         }

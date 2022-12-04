@@ -109,7 +109,7 @@ const gameUpdate = data => {
         if(data.yourTurn == true){
             classH.style.backgroundImage = "url('./images/goku_turn.png')";
             if (data.heroPowerAlreadyUsed == false && data.mp >= 2){
-                classH.style.boxShadow = "0 0 60px 60px #fcffa4"
+                classH.style.boxShadow = "0 0 60px 30px #fcffa4"
             }
             else{
                 classH.style.boxShadow = "none";
@@ -132,7 +132,6 @@ const gameUpdate = data => {
         let progress_circle2 = document.getElementById("circular-progress2");
         progress_circle2.style.background = `conic-gradient(red ${data.hp * (360 / data.maxHp)}deg, #ffffff00 0deg)`;
         //pour le hero power
-
 
         classH.onclick = heroPower
         
@@ -162,7 +161,6 @@ const gameUpdate = data => {
                     }  
                 }
                 console.log(data);
-               
             })
         };
 
@@ -217,21 +215,39 @@ const gameUpdate = data => {
 
             let newP = document.createElement("p");
             newP.className = "infoCarte";
-            newP.textContent = "atk: " + element.atk;
+            newP.textContent = element.atk;
+            newP.style.textAlign = "center";
+            newP.style.height = "20px";
+            newP.style.width = "20px";
             newP.style.position = "fixed";
             newP.style.top = 20+"%";
+            newP.style.backgroundImage = "url('./images/sword.png')";
+            newP.style.backgroundSize = "contain";
+            newP.style.backgroundRepeat = "no-repeat";
 
             let newP1 = document.createElement("p");
             newP1.className = "infoCarte";
-            newP1.textContent = "cost: " + element.cost;
+            newP1.textContent = element.cost;
+            newP1.style.textAlign = "center";
+            newP1.style.height = "20px";
+            newP1.style.width = "20px";
             newP1.style.position = "fixed";
             newP1.style.top = 30+"%";
+            newP1.style.backgroundImage = "url('./images/coin.png')";
+            newP1.style.backgroundSize = "contain";
+            newP1.style.backgroundRepeat = "no-repeat";
             
             let newP2 = document.createElement("p");
             newP2.className = "infoCarte";
-            newP2.textContent = "hp: " + element.hp;
+            newP2.textContent = element.hp;
+            newP2.style.textAlign = "center";
+            newP2.style.height = "20px";
+            newP2.style.width = "20px";
             newP2.style.position = "fixed";
             newP2.style.top = 40+"%";
+            newP2.style.backgroundImage = "url('./images/coeur.png')";
+            newP2.style.backgroundSize = "contain";
+            newP2.style.backgroundRepeat = "no-repeat";
 
             let newP3 = document.createElement("p");
             newP3.className = "infoCarte";
@@ -383,27 +399,47 @@ const gameUpdate = data => {
 
             let newP = document.createElement("p");
             newP.className = "infoCarte";
-            newP.textContent = "atk: " + element.atk;
-            newP.style.position = "relative";
-            newP.style.top = 0+"%";
+            newP.textContent = element.atk;
+            newP.style.textAlign = "center";
+            newP.style.height = "20px";
+            newP.style.width = "20px";
+            newP.style.backgroundImage = "url('./images/sword.png')";
+            newP.style.backgroundSize = "contain";
+            newP.style.backgroundRepeat = "no-repeat";
 
-            //let newP1 = document.createElement("p");
-            //newP1.className = "infoCarte";
-            //newP1.textContent = "cost: " + element.cost;
-            //newP1.style.position = "relative";
-            //newP1.style.top = 0+"%";
+            let newP1 = document.createElement("p");
+            newP1.className = "infoCarte";
+            newP1.textContent = element.cost;
+            newP1.style.textAlign = "center";
+            newP1.style.height = "20px";
+            newP1.style.width = "20px";
+            newP1.style.backgroundImage = "url('./images/coin.png')";
+            newP1.style.backgroundSize = "contain";
+            newP1.style.backgroundRepeat = "no-repeat";
 
             let newP2 = document.createElement("p");
             newP2.className = "infoCarte";
-            newP2.textContent = "hp: " + element.hp;
-            newP2.style.position = "relative";
-            newP2.style.top = 0+"%";
+            newP2.textContent = element.hp;
+            newP2.style.textAlign = "center";
+            newP2.style.height = "20px";
+            newP2.style.width = "20px";
+            newP2.style.backgroundImage = "url('./images/coeur.png')";
+            newP2.style.backgroundSize = "contain";
+            newP2.style.backgroundRepeat = "no-repeat";
 
             let newP3 = document.createElement("p");
             newP3.className = "infoCarte";
             newP3.textContent = "mechanics: " + element.mechanics;
-    
-            newDiv.append(newP, newP2, newP3);
+
+            let grid = document.createElement("div");
+            grid.style.display = "grid";
+            grid.style.gridTemplateColumns = "auto auto auto";
+            grid.style.gridTemplateRows = "auto";
+            grid.style.position = "absolute";
+            grid.style.top = 10+"%";
+            grid.append(newP2, newP1, newP)
+
+            newDiv.append(grid, newP3);
 
             if(element.state == "IDLE"){
                 newDiv.style.opacity = 1;
@@ -460,27 +496,47 @@ const gameUpdate = data => {
 
             let newP = document.createElement("p");
             newP.className = "infoCarte";
-            newP.textContent = "atk: " + element.atk;
-            newP.style.position = "relative";
-            newP.style.top = 0+"%";
+            newP.textContent = element.atk;
+            newP.style.textAlign = "center";
+            newP.style.height = "20px";
+            newP.style.width = "20px";
+            newP.style.backgroundImage = "url('./images/sword.png')";
+            newP.style.backgroundSize = "contain";
+            newP.style.backgroundRepeat = "no-repeat";
 
-            //let newP1 = document.createElement("p");
-            //newP1.className = "infoCarte";
-            //newP1.textContent = "cost: " + element.cost;
-            //newP1.style.position = "relative";
-            //newP1.style.top = 0+"%";
+            let newP1 = document.createElement("p");
+            newP1.className = "infoCarte";
+            newP1.textContent = element.cost;
+            newP1.style.textAlign = "center";
+            newP1.style.height = "20px";
+            newP1.style.width = "20px";
+            newP1.style.backgroundImage = "url('./images/coin.png')";
+            newP1.style.backgroundSize = "contain";
+            newP1.style.backgroundRepeat = "no-repeat";
 
             let newP2 = document.createElement("p");
             newP2.className = "infoCarte";
-            newP2.textContent = "hp: " + element.hp;
-            newP2.style.position = "relative";
-            newP2.style.top = 0+"%";
+            newP2.textContent = element.hp;
+            newP2.style.textAlign = "center";
+            newP2.style.height = "20px";
+            newP2.style.width = "20px";
+            newP2.style.backgroundImage = "url('./images/coeur.png')";
+            newP2.style.backgroundSize = "contain";
+            newP2.style.backgroundRepeat = "no-repeat";
 
             let newP3 = document.createElement("p");
             newP3.className = "infoCarte";
             newP3.textContent = "mechanics: " + element.mechanics;
     
-            newDivAB.append(newP, newP2, newP3);
+            let grid = document.createElement("div");
+            grid.style.display = "grid";
+            grid.style.gridTemplateColumns = "auto auto auto";
+            grid.style.gridTemplateRows = "auto";
+            grid.style.position = "absolute";
+            grid.style.top = 10+"%";
+            grid.append(newP2, newP1, newP)
+
+            newDivAB.append(grid, newP3);
 
             if(element.state == "IDLE"){
                 newDivAB.style.opacity = 1;
@@ -499,8 +555,8 @@ const gameUpdate = data => {
                 newDivAB.style.boxShadow = "0 0 60px 30px #f00"
             }
 
-            //selectionner une carte pour faire une action
             boardA.prepend(newDivAB); 
+            //selectionner une carte pour faire une action      
             newDivAB.onclick = choisirCarte;
             function choisirCarte(){
                 let formdata = new FormData();
@@ -529,8 +585,7 @@ const gameUpdate = data => {
                     console.log(data);
                 })
                 refreshCarteAdv();
-            };
-                           
+            };               
         });
     }
 }
@@ -553,111 +608,111 @@ function delCartePlay(){
     boardJ.remove()
 }
 
-class Feu {
-    constructor(x, y){
-        this.x = x;
-        this.y = y;
-        this.opacity = 1;
-        this.newDiv = document.createElement("div");
-        this.newDiv.className = "feu";
-        this.newDiv.style.left = this.x +'px';
-        this.newDiv.style.top = this.y +'px';
-        this.spriteList = [];
-        document.body.appendChild(this.newDiv);
-    }
+// class Feu {
+//     constructor(x, y){
+//         this.x = x;
+//         this.y = y;
+//         this.opacity = 1;
+//         this.newDiv = document.createElement("div");
+//         this.newDiv.className = "feu";
+//         this.newDiv.style.left = this.x +'px';
+//         this.newDiv.style.top = this.y +'px';
+//         this.spriteList = [];
+//         document.body.appendChild(this.newDiv);
+//     }
 
-    tick(){
-        let alive = true;
-        if (this.opacity > 0){
-            this.opacity -= 0.02;
-        }
-        if(this.opacity == 0.98 ){
-            this.spriteList.push(new FeuEtendu(this.x, this.y - 25, 80, 70));
-            this.spriteList.push(new FeuEtendu(this.x + 50, this.y, 80, 70));
-            this.spriteList.push(new FeuEtendu(this.x + 50, this.y + 50, 80, 70));
-            this.spriteList.push(new FeuEtendu(this.x, this.y + 75, 80, 70));
-            this.spriteList.push(new FeuEtendu(this.x -50, this.y +50, 80, 70));
-            this.spriteList.push(new FeuEtendu(this.x -50, this.y, 80, 70));
+//     tick(){
+//         let alive = true;
+//         if (this.opacity > 0){
+//             this.opacity -= 0.02;
+//         }
+//         if(this.opacity == 0.98 ){
+//             this.spriteList.push(new FeuEtendu(this.x, this.y - 25, 80, 70));
+//             this.spriteList.push(new FeuEtendu(this.x + 50, this.y, 80, 70));
+//             this.spriteList.push(new FeuEtendu(this.x + 50, this.y + 50, 80, 70));
+//             this.spriteList.push(new FeuEtendu(this.x, this.y + 75, 80, 70));
+//             this.spriteList.push(new FeuEtendu(this.x -50, this.y +50, 80, 70));
+//             this.spriteList.push(new FeuEtendu(this.x -50, this.y, 80, 70));
            
-        }
-        if (this.opacity == 0.96) {
-            this.spriteList.push(new FeuEtendu(this.x, this.y - 50, 50, 40));
-            this.spriteList.push(new FeuEtendu(this.x + 100, this.y, 50, 40));
-            this.spriteList.push(new FeuEtendu(this.x + 100, this.y + 100, 50, 40));
-            this.spriteList.push(new FeuEtendu(this.x, this.y + 150, 50, 40));
-            this.spriteList.push(new FeuEtendu(this.x -100, this.y +100, 50, 40));
-            this.spriteList.push(new FeuEtendu(this.x -100, this.y, 50, 40));
+//         }
+//         if (this.opacity == 0.96) {
+//             this.spriteList.push(new FeuEtendu(this.x, this.y - 50, 50, 40));
+//             this.spriteList.push(new FeuEtendu(this.x + 100, this.y, 50, 40));
+//             this.spriteList.push(new FeuEtendu(this.x + 100, this.y + 100, 50, 40));
+//             this.spriteList.push(new FeuEtendu(this.x, this.y + 150, 50, 40));
+//             this.spriteList.push(new FeuEtendu(this.x -100, this.y +100, 50, 40));
+//             this.spriteList.push(new FeuEtendu(this.x -100, this.y, 50, 40));
             
-        }
-        if(this.opacity == 0.94){
-            this.spriteList.push(new FeuEtendu(this.x, this.y - 75, 50, 40));
-            this.spriteList.push(new FeuEtendu(this.x + 150, this.y, 50, 40));
-            this.spriteList.push(new FeuEtendu(this.x + 150, this.y + 150, 50, 40));
-            this.spriteList.push(new FeuEtendu(this.x, this.y + 225, 50, 40));
-            this.spriteList.push(new FeuEtendu(this.x -150, this.y +150, 50, 40));
-            this.spriteList.push(new FeuEtendu(this.x -150, this.y, 50, 40));
-        }
+//         }
+//         if(this.opacity == 0.94){
+//             this.spriteList.push(new FeuEtendu(this.x, this.y - 75, 50, 40));
+//             this.spriteList.push(new FeuEtendu(this.x + 150, this.y, 50, 40));
+//             this.spriteList.push(new FeuEtendu(this.x + 150, this.y + 150, 50, 40));
+//             this.spriteList.push(new FeuEtendu(this.x, this.y + 225, 50, 40));
+//             this.spriteList.push(new FeuEtendu(this.x -150, this.y +150, 50, 40));
+//             this.spriteList.push(new FeuEtendu(this.x -150, this.y, 50, 40));
+//         }
 
-        else if(this.opacity <= 0){
-            if(this.spriteList.length == 0){
-                alive = false;
-            }
+//         else if(this.opacity <= 0){
+//             if(this.spriteList.length == 0){
+//                 alive = false;
+//             }
            
-        }
+//         }
 
-        for(let i = 0; i < this.spriteList.length; i++){
-            const sprit = this.spriteList[i];
-            let alive = sprit.tick();
+//         for(let i = 0; i < this.spriteList.length; i++){
+//             const sprit = this.spriteList[i];
+//             let alive = sprit.tick();
     
-            if(!alive){
-                sprit.newDiv.remove();
-                this.spriteList.splice(i, 1);
-                i--;
-            }
-        }
+//             if(!alive){
+//                 sprit.newDiv.remove();
+//                 this.spriteList.splice(i, 1);
+//                 i--;
+//             }
+//         }
 
-        this.newDiv.style.opacity = this.opacity - 0.02;
-        return alive;
+//         this.newDiv.style.opacity = this.opacity - 0.02;
+//         return alive;
 
-    }
-}
+//     }
+// }
 
-class FeuEtendu{
-    constructor(x,y, height, widht){
-        this.x = x;
-        this.y = y;
-        this.height = height;
-        this.widht = widht;
-        this.opacity = 1;
-        this.newDiv = document.createElement("div");
-        this.newDiv.className = "feu";
-        this.newDiv.style.left = this.x +'px';
-        this.newDiv.style.top = this.y +'px';
-        this.newDiv.style.height = this.height  +'px';
-        this.newDiv.style.widht = this.widht  +'px';
+// class FeuEtendu{
+//     constructor(x,y, height, widht){
+//         this.x = x;
+//         this.y = y;
+//         this.height = height;
+//         this.widht = widht;
+//         this.opacity = 1;
+//         this.newDiv = document.createElement("div");
+//         this.newDiv.className = "feu";
+//         this.newDiv.style.left = this.x +'px';
+//         this.newDiv.style.top = this.y +'px';
+//         this.newDiv.style.height = this.height  +'px';
+//         this.newDiv.style.widht = this.widht  +'px';
         
 
-        if(this.y < window.innerHeight - 100){
+//         if(this.y < window.innerHeight - 100){
             
-           document.body.appendChild(this.newDiv); 
-        }
+//            document.body.appendChild(this.newDiv); 
+//         }
         
-    }
+//     }
     
-    tick(){
-        let alive = true;
-        if (this.opacity > 0){
-            this.opacity -= 0.01;
-        }
-        else if(this.opacity <= 0){
-            this.newDiv.remove();
-            alive = false;
-        }
+//     tick(){
+//         let alive = true;
+//         if (this.opacity > 0){
+//             this.opacity -= 0.01;
+//         }
+//         else if(this.opacity <= 0){
+//             this.newDiv.remove();
+//             alive = false;
+//         }
 
-        this.newDiv.style.opacity = this.opacity - 0.01;
-        return alive;
-    }
-}
+//         this.newDiv.style.opacity = this.opacity - 0.01;
+//         return alive;
+//     }
+// }
 
 const tick = () =>{
     for(let i = 0; i < spriteList.length; i++){
@@ -674,42 +729,42 @@ const tick = () =>{
     window.requestAnimationFrame(tick);
 }
 
-class Shenron{
-    constructor(data){
-        this.newDiv = document.createElement("div");
-        this.newDiv.className = "shenron";
-        this.newDiv2 = document.createElement("div");
-        this.newDiv2.className = "erreur";
-        this.p = document.createElement("p");
-        this.p.innerHTML = data;
-        this.newDiv2.appendChild(this.p);
-        this.opacity = 1;
-        this.opacity2 = 1;
-        document.body.appendChild(this.newDiv);
-        document.body.appendChild(this.newDiv2);
-    }
+// class Shenron{
+//     constructor(data){
+//         this.newDiv = document.createElement("div");
+//         this.newDiv.className = "shenron";
+//         this.newDiv2 = document.createElement("div");
+//         this.newDiv2.className = "erreur";
+//         this.p = document.createElement("p");
+//         this.p.innerHTML = data;
+//         this.newDiv2.appendChild(this.p);
+//         this.opacity = 1;
+//         this.opacity2 = 1;
+//         document.body.appendChild(this.newDiv);
+//         document.body.appendChild(this.newDiv2);
+//     }
 
-    tick(){
-        let alive = true;
-        if (this.opacity > 0){
-            this.opacity -= 0.01;
-        }
-        else if(this.newDiv.style.opacity <= 0){
-            this.newDiv2.remove();
-            alive = false;
-        }
-        this.newDiv2.style.opacity = this.opacity - 0.02;
+//     tick(){
+//         let alive = true;
+//         if (this.opacity > 0){
+//             this.opacity -= 0.01;
+//         }
+//         else if(this.newDiv.style.opacity <= 0){
+//             this.newDiv2.remove();
+//             alive = false;
+//         }
+//         this.newDiv2.style.opacity = this.opacity - 0.02;
 
-        if(this.newDiv2.style.opacity <= 0){
-            if (this.opacity2 > 0){
-                this.opacity2 -= 0.01;
-            }
-            this.newDiv.style.opacity = this.opacity2 - 0.01;
-        }
-        return alive;
+//         if(this.newDiv2.style.opacity <= 0){
+//             if (this.opacity2 > 0){
+//                 this.opacity2 -= 0.01;
+//             }
+//             this.newDiv.style.opacity = this.opacity2 - 0.01;
+//         }
+//         return alive;
 
-    }
-}
+//     }
+// }
 
 
 
