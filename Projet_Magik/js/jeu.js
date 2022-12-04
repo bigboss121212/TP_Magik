@@ -86,18 +86,16 @@ const gameUpdate = data => {
         }
         if(data.yourTurn == false){
             if(data.board.length < boardPl){
-                
-                let x = window.innerWidth * 0.5 - (window.innerWidth * 0.035);
+                let x = window.innerWidth * 0.5 - (window.innerWidth * 0.024);
                 let y = window.innerHeight * 0.5 - (window.innerHeight * 0.12) ; 
                 window.innerWidth;
                 console.log(x);
                 spriteList.push(new Feu(x, y));
             }
             else{
-                console.log("yeahboy")
                 data.board.forEach(element => {
                     if(dict[element.id] != element.hp){
-                        let x = window.innerWidth * 0.5 - (window.innerWidth * 0.035);
+                        let x = window.innerWidth * 0.5 - (window.innerWidth * 0.024);
                         let y = window.innerHeight * 0.5 - (window.innerHeight * 0.12) ; 
                         window.innerWidth;
                         console.log(x);

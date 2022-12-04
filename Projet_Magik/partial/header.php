@@ -46,11 +46,11 @@
     <body>
         <?php
 
-            if(!($pageTitre == "Training" || $pageTitre == "PVP" )){
+            if(!($pageTitre == "Training" || $pageTitre == "PVP" || $pageTitre == "Magik_acceuil")){
                 if($data["isConnected"] > 0){
                 ?>
                     <div id="menu">
-                        <p><?= "BIENVENUE " . $_SESSION["username"]  ?></p>
+                        <p style="font-size:25px"><?= "BIENVENUE " . $_SESSION["username"]  ?></p>
                         <ul>
                             <li><a href="loby.php">Loby</a></li>
                             <li><a href="pageDeck.php">PageDeck</a></li>
