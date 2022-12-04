@@ -22,6 +22,8 @@
             }   
         ?>
 
+        <div id="title"></div>
+
         <form id="login" action="" method="post">
             <div class="formLabel"><label for="courriel"> Nom d'usager : </label></div>
             <div class="formInput"><input class="form" type="text" name="champCourriel" require/></div>

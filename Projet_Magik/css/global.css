@@ -41,12 +41,27 @@ body {
     width: 100%;
     color:red;
     text-align:center;
+    font-size: 50px;
+}
+
+#title{
+    height: 200px;
+    width: 450px;
+    background-image:url('../images/title.png');
+    top: 30%; left: 50%; 
+    transform: translate(-50%, -5%);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    z-index: 2;
 }
 
 #login{
-    /* background-color: rgb(300, 170, 50); */
+  
+    box-shadow: 20px 20px 40px rgba(60,60,150,0.25);
     background-color: white;
-    margin-top: 40%;
+    /* margin-top: 40%; */
     padding: 50px;
     background-position: 50%;
     z-index: 1;
@@ -57,8 +72,10 @@ body {
     border-width: 5px;
     width: 350px;
     height: 300px;
-    top: 50%; left: 50%; /* à 50%/50% du parent référent */
-    transform: translate(-50%, -200%);
+    top: 65%; left: 50%; 
+    transform: translate(-50%, -50%);
+    border-radius: 8%;
+    position: absolute;
 } 
 
 .formLabel{
@@ -222,8 +239,6 @@ li{
     z-index: 1;
     height: 50px;
     width: 60px;
-    padding: 10px;
-    margin : 10px;
     font-size: 40px;
     text-align: center;
     background-image:url('../images/coeur.png');
@@ -232,6 +247,39 @@ li{
     background-position: center center;
     color: white;
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    margin-bottom: -4px;
+
+}
+
+/*tutoriel sur https://www.youtube.com/watch?v=YDgw6HjMCoQ */
+.container3{
+    height: 100px;
+    width: 100px;
+    border-radius: 8px;
+    display: grid;
+    place-items: center;    
+}
+
+/*tutoriel sur https://www.youtube.com/watch?v=YDgw6HjMCoQ */
+#circular-progress3{
+    position: relative;
+    height: 100px;
+    width: 100px;
+    box-shadow: 20px 20px 40px rgba(60,60,150,0.25);
+    /* background-color: rgb(238, 164, 27); */
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: conic-gradient(red 3.6deg, #ffffff00 0deg)
+}
+
+#circular-progress3::before{
+    content: "";
+    position: absolute;
+    height: 80px;
+    width: 80px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 50%;
 
 }
 
@@ -380,40 +428,40 @@ li{
 }
 
 #vie{
-    height: 100px;
-    width: 120px;
+    height: 70px;
+    width: 80px;
     z-index: 1;
     background-image:url('../images/coeur.png');
     background-size:     cover;                    
     background-repeat:   no-repeat;
     background-position: center center;
-    margin: 10px;
+    /* margin: 10px; */
+    object-fit:cover;
     color: white;
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    margin-bottom: -6%;
 }
 
 #vie > p{
-    top: 10%;
+    
     width: 100%;
     text-align:center;
     position: relative;
-    font-size: 60px;
+    font-size: 50px;
 }
 
 /*tutoriel sur https://www.youtube.com/watch?v=YDgw6HjMCoQ */
 .container2{
-    height: 200px;
-    width: 200px;
-    position: absolute;
+    height: 125px;
+    width: 125px;
+    /* position: absolute; */
     /* transform: translate(-50%, 50%);
     top:50%;
     left: 50%; */
     border-radius: 8px;
     display: grid;
     place-items: center;
-    bottom: 45%;
-    
-    
+    /* bottom: 45%; */
 }
 
 /*tutoriel sur https://www.youtube.com/watch?v=YDgw6HjMCoQ */
@@ -426,8 +474,17 @@ li{
     border-radius: 50%;
     display: grid;
     place-items: center;
-  ;
     background: conic-gradient(red 3.6deg, #ffffff00 0deg)
+}
+
+#circular-progress2::before{
+    content: "";
+    position: absolute;
+    height: 100px;
+    width: 100px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 50%;
+
 }
 
 #temps{
@@ -481,7 +538,7 @@ li{
     display: grid;
     place-items: center;
   ;
-    background: conic-gradient(red 3.6deg, #ffffff00 0deg)
+    background: conic-gradient(rgb(243, 203, 93) 3.6deg, #ffffff00 0deg)
 }
 
 #circular-progress::before{

@@ -86,16 +86,18 @@ const gameUpdate = data => {
         }
         if(data.yourTurn == false){
             if(data.board.length < boardPl){
-                let x = window.innerWidth * 0.5 - (window.innerWidth * 0.02);
+                
+                let x = window.innerWidth * 0.5 - (window.innerWidth * 0.035);
                 let y = window.innerHeight * 0.5 - (window.innerHeight * 0.12) ; 
                 window.innerWidth;
                 console.log(x);
                 spriteList.push(new Feu(x, y));
             }
             else{
-                data.hand.forEach(element => {
+                console.log("yeahboy")
+                data.board.forEach(element => {
                     if(dict[element.id] != element.hp){
-                        let x = window.innerWidth * 0.5 - (window.innerWidth * 0.02);
+                        let x = window.innerWidth * 0.5 - (window.innerWidth * 0.035);
                         let y = window.innerHeight * 0.5 - (window.innerHeight * 0.12) ; 
                         window.innerWidth;
                         console.log(x);
@@ -120,8 +122,10 @@ const gameUpdate = data => {
         nbCarte.style.verticalAlign = "center";
         /*tutoriel sur https://www.youtube.com/watch?v=YDgw6HjMCoQ */
         let progress_circle = document.getElementById("circular-progress");
-        progress_circle.style.background = `conic-gradient(red ${data.remainingTurnTime * 7.2}deg, #ffffff00 0deg)`;
+        progress_circle.style.background = `conic-gradient(rgb(243, 203, 93) ${data.remainingTurnTime * 7.2}deg, #ffffff00 0deg)`;
 
+        let progress_circle2 = document.getElementById("circular-progress2");
+        progress_circle2.style.background = `conic-gradient(red ${data.hp * (360 / data.maxHp)}deg, #ffffff00 0deg)`;
         //pour le hero power
         classH.onclick = heroPower
         
@@ -295,6 +299,9 @@ const gameUpdate = data => {
         infoAHp.textContent = data.opponent.hp;
         infoACa.textContent = data.opponent.remainingCardsCount;
         infoAMp.textContent = data.opponent.mp;
+
+        let progress_circle3 = document.getElementById("circular-progress3");
+        progress_circle3.style.background = `conic-gradient(red ${data.opponent.hp * (360 / data.opponent.maxHp)}deg, #ffffff00 0deg)`;
 
         infoAN.onclick = attaquerAdv;
         
