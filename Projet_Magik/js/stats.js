@@ -7,13 +7,22 @@ window.addEventListener("load", () => { //necessaire en js pour lancer cette fon
     
     function ClearDb(){
     
-        console.log("yo");
-    
-        fetch("ajax-db.php", {})
+        let formdata = new FormData();
+        formdata.append("db", "delete");
+
+        fetch("ajax-db.php", {
+            method: "post",
+            body: formdata
+        })
         .then(response => response.json())
         .then(data => {
     
             console.log(data);
+            let stats = document.getElementById("tableauStats");
+            if(stats != null){
+                stats.remove();
+            }
+                
         })
     };
 })

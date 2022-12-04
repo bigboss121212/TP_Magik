@@ -39,14 +39,11 @@ const state = () => {
 
         }
         if (typeof data !== "object") {
-            if(data != null){
-                // let update = document.getElementById("erreur");
-                // update.innerHTML = data;  
+            if(data != null){  
                 spriteList.push(new Shenron(data)); 
             }  
         }
         console.log(data); // contient les cartes/état du jeu.
-        // dataG = data;
         gameUpdate(data);
         
         setTimeout(state, 1000); // Attendre 1 seconde avant de relancer l’appel
@@ -108,9 +105,7 @@ const gameUpdate = data => {
             }
 
         }
-        // classH.firstChild.innerHTML = data.heroClass + "\n";
-        // classH.firstChild.innerHTML += "\n";
-        // classH.firstChild.innerHTML += "my turn:" + data.yourTurn;
+   
         if(data.yourTurn == true){
             classH.style.backgroundImage = "url('./images/goku_turn.png')";
         }
@@ -122,9 +117,10 @@ const gameUpdate = data => {
         temps.firstChild.innerHTML = data.remainingTurnTime;
         magie.firstChild.innerHTML = data.mp;
         nbCarte.firstChild.innerHTML = data.remainingCardsCount;
-
-        // endturn.innerHTML = "END TURN";
         nbCarte.style.verticalAlign = "center";
+        /*tutoriel sur https://www.youtube.com/watch?v=YDgw6HjMCoQ */
+        let progress_circle = document.getElementById("circular-progress");
+        progress_circle.style.background = `conic-gradient(red ${data.remainingTurnTime * 7.2}deg, #ffffff00 0deg)`;
 
         //pour le hero power
         classH.onclick = heroPower
@@ -134,9 +130,7 @@ const gameUpdate = data => {
             .then(response => response.json())
             .then(data => {
                 if (typeof data !== "object") {
-                    if(data != null){
-                        // let update = document.getElementById("erreur");
-                        // update.innerHTML = data;  
+                    if(data != null){  
                         spriteList.push(new Shenron(data)); 
                     }  
                 }
@@ -153,8 +147,6 @@ const gameUpdate = data => {
             .then(data => {
                 if (typeof data !== "object") {
                     if(data != null){
-                        // let update = document.getElementById("erreur");
-                        // update.innerHTML = data; 
                         spriteList.push(new Shenron(data));  
                     }  
                 }
@@ -192,127 +184,117 @@ const gameUpdate = data => {
 
 
         //afficher les cates du joueur
-        //if(data.hand.length != sizePlay){
-            let carte = document.getElementById("grid-container");
-            while (carte.hasChildNodes()) { //enlever tous les enfants
-                carte.removeChild(carte.lastChild);
+        let carte = document.getElementById("grid-container");
+        while (carte.hasChildNodes()) { //enlever tous les enfants
+            carte.removeChild(carte.lastChild);
+        }
+
+        data.hand.forEach(element => {
+
+            let newDiv = document.createElement("div");
+            newDiv.className = "grid-item";
+
+            let newImage = document.createElement("div");
+            newImage.className = "imageCarte";
+
+            newImage.style.backgroundSize = "cover";
+            newImage.style.backgroundRepeat = "no-repeat";
+            newImage.style.backgroundPosition = "center center";
+            newImage.style.backgroundImage = "url('./images/image_carte/" + element.id + ".png')";
+            
+            newDiv.appendChild(newImage);
+
+            let newP = document.createElement("p");
+            newP.className = "infoCarte";
+            newP.textContent = "atk: " + element.atk;
+            newP.style.position = "fixed";
+            newP.style.top = 20+"%";
+
+            let newP1 = document.createElement("p");
+            newP1.className = "infoCarte";
+            newP1.textContent = "cost: " + element.cost;
+            newP1.style.position = "fixed";
+            newP1.style.top = 30+"%";
+            
+            let newP2 = document.createElement("p");
+            newP2.className = "infoCarte";
+            newP2.textContent = "hp: " + element.hp;
+            newP2.style.position = "fixed";
+            newP2.style.top = 40+"%";
+
+            let newP3 = document.createElement("p");
+            newP3.className = "infoCarte";
+            newP3.textContent = "mechanics: " + element.mechanics;
+            
+
+            newDiv.append(newP, newP1, newP2, newP3);
+
+            if(element.mechanics.includes("Taunt")){
+                newDiv.style.boxShadow = "0 0 60px 30px #fcffa4"
             }
-
-            data.hand.forEach(element => {
-
-                let newDiv = document.createElement("div");
-                newDiv.className = "grid-item";
-
-                let newImage = document.createElement("div");
-                newImage.className = "imageCarte";
-
-                
-                newImage.style.backgroundSize = "cover";
-                newImage.style.backgroundRepeat = "no-repeat";
-                newImage.style.backgroundPosition = "center center";
-                newImage.style.backgroundImage = "url('./images/image_carte/" + element.id + ".png')";
-                
-                newDiv.appendChild(newImage);
-
-                let newP = document.createElement("p");
-                newP.className = "infoCarte";
-                newP.textContent = "atk: " + element.atk;
-                newP.style.position = "fixed";
-                newP.style.top = 20+"%";
-
-                let newP1 = document.createElement("p");
-                newP1.className = "infoCarte";
-                newP1.textContent = "cost: " + element.cost;
-                newP1.style.position = "fixed";
-                newP1.style.top = 30+"%";
-                
-                let newP2 = document.createElement("p");
-                newP2.className = "infoCarte";
-                newP2.textContent = "hp: " + element.hp;
-                newP2.style.position = "fixed";
-                newP2.style.top = 40+"%";
-
-                let newP3 = document.createElement("p");
-                newP3.className = "infoCarte";
-                newP3.textContent = "mechanics: " + element.mechanics;
-                
-
-                newDiv.append(newP, newP1, newP2, newP3);
-
-                if(element.mechanics.includes("Taunt")){
-                    newDiv.style.boxShadow = "0 0 60px 30px #fcffa4"
-                }
-                else if(element.mechanics.includes("Stealth")){
-                    newDiv.style.boxShadow = "0 0 60px 30px #1385ee"
-                }
-                else if(element.mechanics.includes("Charge")){
-                    newDiv.style.boxShadow = "0 0 60px 30px #f00"
-                }
-                //pour afficher les carte que l'on peut jouer
-                if (element.cost > data.mp){
-                    newDiv.style.opacity = 0.5;
-                }
-                else{
-                    newDiv.style.opacity = 1;
-                }
-                //function pour jouer une carte lorsque c'est notre tour
-                newDiv.onclick = jouerCarte;
-                
-                function jouerCarte(){
-                    let formdata = new FormData();
-                    formdata.append("uid", element.uid)
-                    fetch("ajax-carte.php", {
-                        method: "post",
-                        body: formdata
-                    })
-                    .then(response => response.json())
-                    .then(data => {
-                        if (typeof data !== "object") {
-                            if(data != null){
-                                // let update = document.getElementById("erreur");
-                                // update.innerHTML = data; 
-                                spriteList.push(new Shenron(data));  
-                            }
+            else if(element.mechanics.includes("Stealth")){
+                newDiv.style.boxShadow = "0 0 60px 30px #1385ee"
+            }
+            else if(element.mechanics.includes("Charge")){
+                newDiv.style.boxShadow = "0 0 60px 30px #f00"
+            }
+            //pour afficher les carte que l'on peut jouer
+            if (element.cost > data.mp){
+                newDiv.style.opacity = 0.5;
+            }
+            else{
+                newDiv.style.opacity = 1;
+            }
+            //function pour jouer une carte lorsque c'est notre tour
+            newDiv.onclick = jouerCarte;
+            
+            function jouerCarte(){
+                let formdata = new FormData();
+                formdata.append("uid", element.uid)
+                fetch("ajax-carte.php", {
+                    method: "post",
+                    body: formdata
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (typeof data !== "object") {
+                        if(data != null){ 
+                            spriteList.push(new Shenron(data));  
                         }
-                        else{
-                            data.mp -= element.cost;
-                            console.log("Carte joue");
-                            //pour comptabiliser le nbr de fois qu'une carte est joue, pour les stats
-                             let formdata = new FormData();
-                             formdata.append("id", element.id);
-                             formdata.append("count", 1);
-                             fetch("ajax-carte-count.php", {
-                                 method: "post",
-                                 body: formdata
-                             })
-                             .then(response => response.json())
-                             .then(data => {
-                                 console.log(data);
-                             })
-                            refreshCartePlay();
-                        }
-                    })          
-                };
+                    }
+                    else{
+                        data.mp -= element.cost;
+                        console.log("Carte joue");
+                        //pour comptabiliser le nbr de fois qu'une carte est joue, pour les stats
+                            let formdata = new FormData();
+                            formdata.append("id", element.id);
+                            formdata.append("count", 1);
+                            fetch("ajax-carte-count.php", {
+                                method: "post",
+                                body: formdata
+                            })
+                            .then(response => response.json())
+                            .then(data => {
+                                console.log(data);
+                            })
+                        refreshCartePlay();
+                    }
+                })          
+            };
 
-                carte.prepend(newDiv);                
-            });
-
-        //}
-        //sizePlay = data.hand.length;
+            carte.prepend(newDiv);                
+        });
 
         // afficher les infos adverses
-        
         let infoAN = document.getElementById("infoAN");
         let infoAHp = document.getElementById("infoAHp");
         let infoACa = document.getElementById("infoACa");
         let infoAMp = document.getElementById("infoAMp");
 
-        
         infoAN.textContent = data.opponent.username;
         infoAHp.textContent = data.opponent.hp;
         infoACa.textContent = data.opponent.remainingCardsCount;
         infoAMp.textContent = data.opponent.mp;
-
 
         infoAN.onclick = attaquerAdv;
         
@@ -329,8 +311,6 @@ const gameUpdate = data => {
             .then(response => response.json())
             .then(data => {
                 if (typeof data !== "object") {
-                    // let update = document.getElementById("erreur");
-                    // update.innerHTML = data; 
                     spriteList.push(new Shenron(data)); 
                 }
                 else{
@@ -346,10 +326,6 @@ const gameUpdate = data => {
             })  
            
         };
-       
-        // console.log(data.opponent);
-
-        // if(data.opponent.handSize != sizeAdv){
 
         let mainAdv = document.getElementById("carteAdv");
         while (mainAdv.hasChildNodes()) { //enlever tous les enfants
@@ -362,24 +338,10 @@ const gameUpdate = data => {
             newDiv.className = "carteA";
             mainAdv.prepend(newDiv);
         }
-        // }
-        // sizeAdv = data.opponent.handSize;
 
-        //pour l'affichage du board de l'adversaire
-        //if(data.opponent.board.length != boardAdv){
         refreshCarteAdv(); 
-        //}
-
-        //boardAdv = data.opponent.board.length;
-
-
-        //pour afficher le board du joueur
-
-        //if(data.board.length != boardPl){
+ 
         refreshCartePlay();
-        //}
-
-        //boardPl = data.opponent.board.length;
     }
 
 
@@ -390,7 +352,6 @@ const gameUpdate = data => {
         while (boardJ.hasChildNodes()) { //enlever tous les enfants
             boardJ.removeChild(boardJ.lastChild);
         }
-        //faire boucle wile, creer les cartes
 
         data.board.forEach(element => {
 
@@ -460,8 +421,6 @@ const gameUpdate = data => {
 
             boardJ.prepend(newDiv);                
         });
-
-        // boardPl = data.opponent.board.length;
     }
 
     function refreshCarteAdv() {
@@ -471,7 +430,6 @@ const gameUpdate = data => {
             boardA.removeChild(boardA.lastChild);
         }
         //faire boucle wile, creer les cartes
-
         data.opponent.board.forEach(element => {
 
             let newDivAB = document.createElement("div");
@@ -531,45 +489,36 @@ const gameUpdate = data => {
             boardA.prepend(newDivAB); 
             newDivAB.onclick = choisirCarte;
             function choisirCarte(){
-                // if(!(element.mechanics.includes("Stealth"))){
-                    // if(attaquer){
-                        let formdata = new FormData();
-                        formdata.append("uidAdv", element.uid);
-                        formdata.append("uidPlay", carteActionUID);
+                let formdata = new FormData();
+                formdata.append("uidAdv", element.uid);
+                formdata.append("uidPlay", carteActionUID);
 
-                        fetch("ajax-attaque.php", {
-                            method: "post",
-                            body: formdata
-                        })
-                        .then(response => response.json())
-                        .then(data => {
-                            if (typeof data !== "object") {
-                                if(data != null){
-                                    // let update = document.getElementById("erreur");
-                                    // update.innerHTML = data;  
-                                    spriteList.push(new Shenron(data)); 
-                                }  
-                            }
-                            else{
-                                let x = window.innerWidth * 0.5 - (window.innerWidth * 0.02);
-                                let y = window.innerHeight * 0.5 - (window.innerHeight * 0.12) ; 
-                                window.innerWidth
-                                console.log(x)
-                                spriteList.push(new Feu(x, y))
-                                attaquer = false;
-                                carteActionUID = null;
-                            }
-                            console.log(data);
-                        })
-                        refreshCarteAdv();
-                    // }
-                // }
+                fetch("ajax-attaque.php", {
+                    method: "post",
+                    body: formdata
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (typeof data !== "object") {
+                        if(data != null){ 
+                            spriteList.push(new Shenron(data)); 
+                        }  
+                    }
+                    else{
+                        let x = window.innerWidth * 0.5 - (window.innerWidth * 0.02);
+                        let y = window.innerHeight * 0.5 - (window.innerHeight * 0.12) ; 
+                        window.innerWidth
+                        spriteList.push(new Feu(x, y))
+                        attaquer = false;
+                        carteActionUID = null;
+                    }
+                    console.log(data);
+                })
+                refreshCarteAdv();
             };
                            
         });
-        // boardAdv = data.opponent.board.length;
     }
-
 }
 
 function delCarteAdv(){
@@ -693,11 +642,8 @@ class FeuEtendu{
 
         this.newDiv.style.opacity = this.opacity - 0.01;
         return alive;
-
     }
 }
-
-
 
 const tick = () =>{
     for(let i = 0; i < spriteList.length; i++){

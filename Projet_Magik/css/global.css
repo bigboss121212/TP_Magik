@@ -400,6 +400,36 @@ li{
     font-size: 60px;
 }
 
+/*tutoriel sur https://www.youtube.com/watch?v=YDgw6HjMCoQ */
+.container2{
+    height: 200px;
+    width: 200px;
+    position: absolute;
+    /* transform: translate(-50%, 50%);
+    top:50%;
+    left: 50%; */
+    border-radius: 8px;
+    display: grid;
+    place-items: center;
+    bottom: 45%;
+    
+    
+}
+
+/*tutoriel sur https://www.youtube.com/watch?v=YDgw6HjMCoQ */
+#circular-progress2{
+    position: relative;
+    height: 125px;
+    width: 125px;
+    box-shadow: 20px 20px 40px rgba(60,60,150,0.25);
+    /* background-color: rgb(238, 164, 27); */
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+  ;
+    background: conic-gradient(red 3.6deg, #ffffff00 0deg)
+}
+
 #temps{
     height: 100px;
     width: 100px;
@@ -408,12 +438,12 @@ li{
     background-size:     cover;                    
     background-repeat:   no-repeat;
     background-position: center center;
-    margin: 10px;
+    /* margin: 10px; */
     color: white;
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-    bottom: 50%;
-    left: 3%;
-    position: absolute;
+    /* bottom: 50%;
+    left: 3%; */
+    /* position: absolute; */
 }
 
 #temps > p{
@@ -423,6 +453,55 @@ li{
     position: relative;
     font-size: 60px;
 }
+
+/*tutoriel sur https://www.youtube.com/watch?v=YDgw6HjMCoQ */
+.container{
+    height: 200px;
+    width: 200px;
+    position: absolute;
+    /* transform: translate(-50%, 50%);
+    top:50%;
+    left: 50%; */
+    border-radius: 8px;
+    display: grid;
+    place-items: center;
+    bottom: 45%;
+    
+    
+}
+
+/*tutoriel sur https://www.youtube.com/watch?v=YDgw6HjMCoQ */
+#circular-progress{
+    position: relative;
+    height: 125px;
+    width: 125px;
+    box-shadow: 20px 20px 40px rgba(60,60,150,0.25);
+    /* background-color: rgb(238, 164, 27); */
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+  ;
+    background: conic-gradient(red 3.6deg, #ffffff00 0deg)
+}
+
+#circular-progress::before{
+    content: "";
+    position: absolute;
+    height: 100px;
+    width: 100px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 50%;
+
+}
+
+
+/* .value-container{
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    border: 1px solid red */
+    
+/* } */
 
 #magie{
     height: 100px;
