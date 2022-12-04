@@ -35,13 +35,7 @@
 		
 		<div id="grid-container"></div>
 
-		<div id="boutonChat">
-			<p>CHAT</p>
-			<!-- <img src="../Projet_Magik/images/chat.png" alt="text"> -->
-		</div>
-		<iframe id="chatGame" style="width:400px;height:240px;z-index:1;position:absolute;bottom:6%;right:10%;opacity:0;" 
-        src="https://magix.apps-de-cours.com/server/#/chat/<?=$_SESSION['key'] ?>">
-		</iframe>
+
 
 		<div class="container">
 			<div id="circular-progress">
@@ -68,8 +62,15 @@
 
 		<div id="jeuPersonnel"></div>
 
+	
+		<iframe id="chatGame" style="width:400px;height:240px;z-index:1;position:absolute;bottom:6%;right:10%;opacity:0;" 
+        src="https://magix.apps-de-cours.com/server/#/chat/<?=$_SESSION['key'] ?>">
+		</iframe>
 
 		<div id="abandonne">
+			<div id="boutonChat">
+				<p>CHAT</p>
+			</div>
 			<button type="button" id="boutonA">
 				<p>END TURN</p>	
 			</button>	

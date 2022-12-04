@@ -108,9 +108,16 @@ const gameUpdate = data => {
    
         if(data.yourTurn == true){
             classH.style.backgroundImage = "url('./images/goku_turn.png')";
+            if (data.heroPowerAlreadyUsed == false && data.mp >= 2){
+                classH.style.boxShadow = "0 0 60px 60px #fcffa4"
+            }
+            else{
+                classH.style.boxShadow = "none";
+            }
         }
         else{
             classH.style.backgroundImage = "url('./images/goku.png')";
+            classH.style.boxShadow = "none";
         }
         
         vie.firstChild.innerHTML = data.hp;
@@ -125,6 +132,8 @@ const gameUpdate = data => {
         let progress_circle2 = document.getElementById("circular-progress2");
         progress_circle2.style.background = `conic-gradient(red ${data.hp * (360 / data.maxHp)}deg, #ffffff00 0deg)`;
         //pour le hero power
+
+
         classH.onclick = heroPower
         
         function heroPower(){

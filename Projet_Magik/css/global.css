@@ -592,6 +592,7 @@ li{
     margin: 10px;
     color: white;
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    border-radius: 50%;
 }
 
 /* #classH > p{
@@ -639,7 +640,7 @@ li{
 #abandonne{
     display: grid;
     grid-template-columns: auto;
-    grid-template-rows: auto auto;
+    grid-template-rows: auto auto auto;
     z-index: 1;
     position: absolute;
     bottom: 5%; 
@@ -689,13 +690,14 @@ li{
 
 #boutonChat{
     z-index: 1;
-    position: absolute; 
-    height: 120px;
-    width: 140px;
-    right: 2.5%;
+    margin: 10px;
+    /* position: absolute;  */
+    height: 100px;
+    width: 100px;
+    /* right: 2.5%; */
     text-align:center; 
-    bottom: 23%;
-    padding-top: 10px;
+    /* bottom: 23%; */
+    /* padding-top: 10px; */
     color: white;
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
     background-image: url('../images/chat2.png');
