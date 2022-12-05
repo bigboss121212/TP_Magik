@@ -44,7 +44,7 @@ body {
     height: 200px;
     width: 450px;
     background-image:url('../images/title.png');
-    top: 30%; left: 50%; 
+    top: 20%; left: 50%; 
     transform: translate(-50%, -5%);
     background-position: center;
     background-repeat: no-repeat;
@@ -59,7 +59,7 @@ body {
     background-color: white;
     /* margin-top: 40%; */
     padding: 50px;
-    background-position: 50%;
+    background-position: 40%;
     z-index: 1;
     position: absolute;
     transition: 1s all;
@@ -337,7 +337,7 @@ li:hover{
     height: 200px;
     z-index: 1;
     display:flex;
-    top: 23%;
+    top: 16%;
     position: absolute;
     /* border: 1px solid rgba(0, 0, 0, 0.8); */
     justify-content: center;
@@ -390,7 +390,7 @@ li:hover{
     height: 200px;
     z-index: 1;
     display:flex;
-    bottom: 35%;
+    bottom: 40%;
     position: absolute;
     /* border: 1px solid rgba(0, 0, 0, 0.8); */
     justify-content: center;

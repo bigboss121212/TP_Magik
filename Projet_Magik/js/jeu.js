@@ -88,16 +88,16 @@ const gameUpdate = data => {
         }
         if(data.yourTurn == false){
             if(data.board.length < boardPl){
-                let x = window.innerWidth * 0.5 - (window.innerWidth * 0.024);
-                let y = window.innerHeight * 0.5 - (window.innerHeight * 0.12) ; 
+                let x = window.innerWidth * 0.5 - (window.innerWidth * 0.027);
+                let y = window.innerHeight * 0.5 - (window.innerHeight * 0.20) ; 
                 boardPl = data.board.length
                 spriteList.push(new Feu(x, y));
             }
             else{
                 data.board.forEach(element => {
                     if(dict[element.id] != element.hp){
-                        let x = window.innerWidth * 0.5 - (window.innerWidth * 0.024);
-                        let y = window.innerHeight * 0.5 - (window.innerHeight * 0.12) ; 
+                        let x = window.innerWidth * 0.5 - (window.innerWidth * 0.027);
+                        let y = window.innerHeight * 0.5 - (window.innerHeight * 0.20) ; 
                         spriteList.push(new Feu(x, y));
                     }
                 })
