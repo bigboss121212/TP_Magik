@@ -28,23 +28,15 @@
 			</div>
 		</div>
 
-		
-
 		<div id="jeuAdv"></div>
 		<div id="jeuPlayer"></div>
-		
 		<div id="grid-container"></div>
-
-
 
 		<div class="container">
 			<div id="circular-progress">
 				<div id="temps"><p></p></div>
 			</div>
 		</div>
-
-		
-		<!-- <div class="erreur">UPDATE...</div> -->
 
 		<div id="infoPerso">
 			<div id="nbCarte"><p></p></div>
@@ -61,7 +53,6 @@
 
 		<div id="jeuPersonnel"></div>
 
-	
 		<iframe id="chatGame" style="width:400px;height:240px;z-index:1;position:absolute;bottom:6%;right:10%;opacity:0;" 
         src="https://magix.apps-de-cours.com/server/#/chat/<?=$_SESSION['key'] ?>">
 		</iframe>

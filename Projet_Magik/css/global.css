@@ -57,7 +57,6 @@ body {
   
     box-shadow: 20px 20px 40px rgba(60,60,150,0.25);
     background-color: white;
-    /* margin-top: 40%; */
     padding: 50px;
     background-position: 40%;
     z-index: 1;
@@ -81,8 +80,6 @@ body {
 
 .form{
     height: 20px;
-  
-    /* position:asolute; */
 }
 
 
@@ -118,8 +115,6 @@ body {
     position:absolute;
     background-color: rgb(149, 171, 192);
     border: solid 2px rgb(112, 142, 243);
-   
-
 }
 
 #menu ul  li{
@@ -198,7 +193,6 @@ li:hover{
     margin : 10px;
     margin-left: 20px;
     border-radius: 15%;
-    /* border: 1px solid rgba(0, 0, 0, 0.8); */
     background-image:url('../images/dosCarte.jpg');
     background-size:     cover;                    
     background-repeat:   no-repeat;
@@ -223,22 +217,18 @@ li:hover{
     width: 90px;
     padding: 10px;
     margin : 10px;
-    /* font-size: 30px; */
     text-align: center;
     background-image:url('../images/ball.png');
     background-size:     cover;                    
     background-repeat:   no-repeat;
     background-position: center center;
     color: white;
-
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
     top: -20px;
     position: relative;
-
 }
 
 #infoAHp{
-    
     z-index: 1;
     height: 50px;
     width: 60px;
@@ -251,7 +241,6 @@ li:hover{
     color: white;
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
     margin-bottom: -4px;
-
 }
 
 /*tutoriel sur https://www.youtube.com/watch?v=YDgw6HjMCoQ */
@@ -283,7 +272,6 @@ li:hover{
     width: 80px;
     background-color: rgb(255, 255, 255);
     border-radius: 50%;
-
 }
 
 #infoACa{
@@ -291,7 +279,6 @@ li:hover{
     height: 70px;
     width: 40px;
     padding: 10px;
-    /* margin : 10px; */
     text-align: center;
     background-image:url('../images/dosCarte.jpg');
     background-size:     cover;                    
@@ -304,7 +291,6 @@ li:hover{
 }
 
 #infoAMp{
-    
     z-index: 1;
     height: 50px;
     width: 50px;
@@ -318,7 +304,6 @@ li:hover{
     background-position: center center;
     color: white;
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-
 }
 
 #background_3{
@@ -338,9 +323,8 @@ li:hover{
     z-index: 1;
     display:flex;
     top: 16%;
-    position: absolute;
-    /* border: 1px solid rgba(0, 0, 0, 0.8); */
     justify-content: center;
+    position: absolute;
 }
 
 .carteABoard{
@@ -392,9 +376,7 @@ li:hover{
     display:flex;
     bottom: 40%;
     position: absolute;
-    /* border: 1px solid rgba(0, 0, 0, 0.8); */
     justify-content: center;
-
 }
 
 #infoPerso{
@@ -439,7 +421,6 @@ li:hover{
     background-size:     cover;                    
     background-repeat:   no-repeat;
     background-position: center center;
-    /* margin: 10px; */
     object-fit:cover;
     color: white;
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
@@ -447,7 +428,6 @@ li:hover{
 }
 
 #vie > p{
-    
     width: 100%;
     text-align:center;
     position: relative;
@@ -458,14 +438,9 @@ li:hover{
 .container2{
     height: 125px;
     width: 125px;
-    /* position: absolute; */
-    /* transform: translate(-50%, 50%);
-    top:50%;
-    left: 50%; */
     border-radius: 8px;
     display: grid;
     place-items: center;
-    /* bottom: 45%; */
 }
 
 /*tutoriel sur https://www.youtube.com/watch?v=YDgw6HjMCoQ */
@@ -474,7 +449,6 @@ li:hover{
     height: 125px;
     width: 125px;
     box-shadow: 20px 20px 40px rgba(60,60,150,0.25);
-    /* background-color: rgb(238, 164, 27); */
     border-radius: 50%;
     display: grid;
     place-items: center;
@@ -499,12 +473,8 @@ li:hover{
     background-size:     cover;                    
     background-repeat:   no-repeat;
     background-position: center center;
-    /* margin: 10px; */
     color: white;
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-    /* bottom: 50%;
-    left: 3%; */
-    /* position: absolute; */
 }
 
 #temps > p{
@@ -520,16 +490,11 @@ li:hover{
     height: 200px;
     width: 200px;
     position: absolute;
-    /* transform: translate(-50%, 50%);
-    top:50%;
-    left: 50%; */
     border-radius: 8px;
     display: grid;
     place-items: center;
     bottom: 45%;
-    right: 2%
-    
-    
+    right: 2% 
 }
 
 /*tutoriel sur https://www.youtube.com/watch?v=YDgw6HjMCoQ */
@@ -538,11 +503,9 @@ li:hover{
     height: 125px;
     width: 125px;
     box-shadow: 20px 20px 40px rgba(60,60,150,0.25);
-    /* background-color: rgb(238, 164, 27); */
     border-radius: 50%;
     display: grid;
     place-items: center;
-  ;
     background: conic-gradient(rgb(243, 203, 93) 3.6deg, #ffffff00 0deg)
 }
 
@@ -555,15 +518,6 @@ li:hover{
     border-radius: 50%;
 
 }
-
-
-/* .value-container{
-    height: 100px;
-    width: 100px;
-    border-radius: 50%;
-    border: 1px solid red */
-    
-/* } */
 
 #magie{
     height: 100px;
@@ -600,13 +554,6 @@ li:hover{
     border-radius: 50%;
 }
 
-/* #classH > p{
-    top: 50%;
-    width: 100%;
-    text-align:center;
-    position: relative;
-} */
-
 #grid-container {
     display: grid;
     grid-template-columns: auto auto auto auto auto auto auto auto;
@@ -616,7 +563,6 @@ li:hover{
     left: 50%;
     transform: translate(-50%);
 }
-
 
 .grid-item {
     background-color: rgba(255, 255, 255, 0.8);
@@ -632,7 +578,6 @@ li:hover{
     background-size:     cover;                    
     background-repeat:   no-repeat;
     background-position: center center; 
-    
 }
 
 
@@ -680,8 +625,7 @@ li:hover{
 
 }
 
-#boutonA > p{
-    
+#boutonA > p{ 
     width: 100%;
     text-align:center; 
     position: relative;
@@ -696,13 +640,9 @@ li:hover{
 #boutonChat{
     z-index: 1;
     margin: 10px;
-    /* position: absolute;  */
     height: 100px;
     width: 100px;
-    /* right: 2.5%; */
     text-align:center; 
-    /* bottom: 23%; */
-    /* padding-top: 10px; */
     color: white;
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
     background-image: url('../images/chat2.png');
@@ -796,7 +736,6 @@ li:hover{
     position: absolute;
     background-size: contain;
 }
-
 
 /* pour les stats */
 

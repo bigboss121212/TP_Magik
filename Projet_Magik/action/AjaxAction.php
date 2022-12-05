@@ -15,11 +15,7 @@
 
             $result2 = parent::callAPI("games/state", $data);
 
-            //echo(json_decode($result2));
-
-            // return json_encode($result2);
             return compact("result2");
-            // return $resultat;
         }
 
     }

@@ -6,10 +6,6 @@ doge.src = "images/fond.png";
 let n = 0;
 
 window.addEventListener("load", () => {
-    // document.querySelector("form").onsubmit = function () {
-    //     return register(this);
-    // }
-
     canevas = document.querySelector("#canvas");
     canevas.width = window.innerWidth
     canevas.height = window.innerHeight
@@ -29,9 +25,7 @@ class Fighter{
         this.tiledImage = new TiledImage("images/raditz.png", columCount, rowCount, delay, loop, scale);
         this.tiledImage.changeRow(1.5);
         this.tiledImage.changeCol(6.2);
-        // this.tiledImage.changeMinMaxInterval(5.23,6.2);
         this.tiledImage.nodeID = n
-        // this.y = Math.random() * 700 + 100;
         this.x = 250;
 		this.y = 950;
         this.cible_x = 200;
@@ -85,11 +79,6 @@ const tick = () => {
         ctx.drawImage(doge,0,0,canevas.width,canevas.height); 
     }
     x = Math.random()
-    // if(x < 0.01){
-        
-    //     spriteList.push(new Fighter()); 
-    //     console.log(spriteList)
-    // }
 
 	for (let i = 0; i < spriteList.length; i++) {
 		let alive = spriteList[i].tick();

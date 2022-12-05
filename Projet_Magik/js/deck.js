@@ -1,4 +1,4 @@
-window.addEventListener("load", () => { //necessaire en js pour lancer cette fonction une fois que la page est load
+window.addEventListener("load", () => { 
     applyStyles();
 })
 
@@ -6,7 +6,6 @@ const applyStyles = iframe => {
 	let styles = {
 		fontColor : "#333",
 		backgroundColor : "rgba(87, 41, 5, 0.2)",
-		// fontGoogleName : "Sofia",
 		fontSize : "20px",
 		hideIcons : false, //(or true),
 		inputBackgroundColor : "red",

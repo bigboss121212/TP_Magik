@@ -4,8 +4,6 @@
         <title><?=$pageTitre?></title>
         <meta charset="utf-8">
         <link rel="stylesheet" href="css/global.css">
-        <!-- <script src="js/javascript.js"></script> -->
-        <!-- mettre dans des variables dans le header des pages-->
         <?php
             if($pageTitre == "Magik_acceuil"){
                 ?>

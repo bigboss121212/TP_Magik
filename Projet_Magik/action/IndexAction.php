@@ -44,6 +44,5 @@
                 return compact("hasConnectionError");
             }
             
-            
         }
     }

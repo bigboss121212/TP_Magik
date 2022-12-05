@@ -9,18 +9,6 @@
 
         protected function executeAction() {
 
-            $data = [];
-
-
-           
-
-                // if($_SESSION["visibility"] = 0){
-
-                //     $resultat = parent::callAPI("signout", $_SESSION['key']);
-                //     header("location:index.php");
-                //     exit;
-                // }
-            
             return [];
         }
     }

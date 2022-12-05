@@ -47,7 +47,6 @@ class Feu {
             if(this.spriteList.length == 0){
                 alive = false;
             }
-           
         }
 
         for(let i = 0; i < this.spriteList.length; i++){
@@ -63,7 +62,6 @@ class Feu {
 
         this.newDiv.style.opacity = this.opacity - 0.02;
         return alive;
-
     }
 }
 
