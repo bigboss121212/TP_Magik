@@ -9,7 +9,7 @@ window.addEventListener("load", () => {
     // document.querySelector("form").onsubmit = function () {
     //     return register(this);
     // }
-// rajouter un caneva dans l'index
+
     canevas = document.querySelector("#canvas");
     canevas.width = window.innerWidth
     canevas.height = window.innerHeight
@@ -34,8 +34,8 @@ class Fighter{
         // this.y = Math.random() * 700 + 100;
         this.x = 250;
 		this.y = 950;
-        this.cible_x = 100;
-        this.cible_y = 40;
+        this.cible_x = 200;
+        this.cible_y = 100;
         this.cible_h = true;
     }
 
@@ -59,12 +59,12 @@ class Fighter{
             if(this.cible_h){
 
                 this.cible_y = 300//canevas.height - 200;
-                this.cible_x = 200; 
+                this.cible_x = 300; 
                 this.cible_h = false;
             }
             else if (!this.cible_h){
-                this.cible_x = 100;
-                this.cible_y = 100;
+                this.cible_x = 200;
+                this.cible_y = 200;
                 this.cible_h = true;
             }
         }

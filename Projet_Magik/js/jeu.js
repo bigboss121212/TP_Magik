@@ -79,17 +79,18 @@ const gameUpdate = data => {
         myLife = data.hp;
 
         if(data.yourTurn == true){
-            data.hand.forEach(element => {
+            dict = {};
+            data.board.forEach(element => {
                 dict[element.id] = element.hp;
             })
             boardPl = data.board.length;
+            console.log(dict);
         }
         if(data.yourTurn == false){
             if(data.board.length < boardPl){
                 let x = window.innerWidth * 0.5 - (window.innerWidth * 0.024);
                 let y = window.innerHeight * 0.5 - (window.innerHeight * 0.12) ; 
-                window.innerWidth;
-                console.log(x);
+                boardPl = data.board.length
                 spriteList.push(new Feu(x, y));
             }
             else{
@@ -97,8 +98,6 @@ const gameUpdate = data => {
                     if(dict[element.id] != element.hp){
                         let x = window.innerWidth * 0.5 - (window.innerWidth * 0.024);
                         let y = window.innerHeight * 0.5 - (window.innerHeight * 0.12) ; 
-                        window.innerWidth;
-                        console.log(x);
                         spriteList.push(new Feu(x, y));
                     }
                 })

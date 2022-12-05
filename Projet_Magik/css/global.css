@@ -138,8 +138,12 @@ li{
     font-family: Arial, Helvetica, sans-serif;
     font-size : 20px;
     margin: 0 10px 0 10px;
-    padding: 10px;
+    padding: 20px;
     border: groove;
+}
+
+li:hover{
+    background-color: rgb(230, 107, 26); 
 }
 
 /* pour le Deck */
@@ -835,7 +839,9 @@ li{
     border-radius: 10%;
 }
 
-
+#clear:hover{
+    background-color: #476be2;
+}
 
 
 #tableauStats {
