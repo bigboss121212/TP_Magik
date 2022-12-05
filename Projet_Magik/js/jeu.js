@@ -6,7 +6,7 @@ let carteActionUID = null;
 let chatAfficher = false;
 let finPartie = true;
 let spriteList = [];
-let myLife = 35;
+let myLife = 30;
 let dict = {};
 
 
